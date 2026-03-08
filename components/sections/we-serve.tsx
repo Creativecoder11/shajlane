@@ -4,12 +4,29 @@ import Container from "@/components/sections/container";
 import FadeIn from "@/components/sections/fade-in";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const categories = [
-  "Facial Cleansers",
-  "Serums & Moisturizers",
-  "Sun Protection",
-  "Body Care",
+  {
+    title: "Authentic Brands",
+    desc: "We source genuine beauty products directly from trusted global brands.",
+    icon: "/assets/icon/authentic.svg",
+  },
+  {
+    title: "Verified Suppliers",
+    desc: "Strong partnerships ensure original, certified, and fully traceable inventory.",
+    icon: "/assets/icon/suppliers.svg",
+  },
+  {
+    title: "Quality Assurance",
+    desc: "Every product checked to guarantee authenticity and premium standards.",
+    icon: "/assets/icon/quality.svg",
+  },
+  {
+    title: "Trusted Distribution",
+    desc: "Reliable sourcing network delivering compliant and brand-approved beauty products.",
+    icon: "/assets/icon/distribution.svg",
+  },
 ];
 
 const fadeUp = {
@@ -27,27 +44,19 @@ export default function WeServe() {
       id="we-serve"
       className="section-y max-w-[1440px] px-4 sm:px-6 lg:px-8 mx-auto"
     >
-      <div className="flex ">
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((name, idx) => (
-            <FadeIn key={name} delay={0.04 * idx}>
-              <div
-                className={cn(
-                  "group relative overflow-hidden rounded-2xl border border-border bg-white p-6 shadow-sm transition-all",
-                  "hover:-translate-y-0.5 hover:shadow-soft",
-                )}
-              >
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,oklch(var(--soft-pink)),transparent_60%),radial-gradient(circle_at_bottom_right,oklch(var(--soft-beige)),transparent_55%)] opacity-70" />
-                <p className="font-heading text-xl tracking-tight">{name}</p>
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Premium wholesale assortment curated for B2B demand.
-                </p>
-                <div className="mt-6 h-10 w-full rounded-xl bg-white/65 border border-border/60" />
-              </div>
-            </FadeIn>
-          ))}
+      <div className="flex gap-12">
+        {/* Left image */}
+        <div className="w-1/2 flex items-end bg-[#F9FAFB] rounded-2xl">
+          <Image
+            src="/Mobile Screen1.svg"
+            alt="We Serve"
+            width={650}
+            height={300}
+          />
         </div>
-        <div className="mx-auto text-left">
+
+        {/* Right content */}
+        <div className="w-1/2 mx-auto text-left">
           <FadeIn className="space-y-3">
             <div className="flex flex-col items-left justify-center gap-2">
               <span className="flex items-center gap-2 text-xl font-medium text-[#7E4BA4] uppercase">
@@ -62,10 +71,10 @@ export default function WeServe() {
 
               <motion.h1
                 variants={fadeUp}
-                className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[1.08] tracking-tight text-gray-900"
+                className="text-[2.6rem] sm:text-[3.2rem] lg:text-5xl font-semibold leading-[1.08] tracking-tight text-gray-900"
               >
                 Excellence In <br />
-                <span className="relative inline-block text-6xl font-semibold tracking-tight">
+                <span className="relative inline-block text-5xl font-semibold tracking-tight">
                   <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
                     Quality And Compliance
                   </span>
@@ -99,11 +108,60 @@ export default function WeServe() {
               </motion.h1>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Shajlane is a dedicated B2B beauty distribution platform built to
-              serve professionals. We deliver premium beauty brands at
-              competitive wholesale pricing, helping salons, retailers, and
-              resellers grow sustainably.
+              We ensure top-quality products by strictly following compliance
+              standards, delivering safe, reliable, and trustworthy beauty
+              solutions every time.
             </p>
+            <div>
+              {categories.map((item, idx) => (
+                <FadeIn key={item.title} delay={0.04 * idx}>
+                  <div className="flex items-start gap-5 py-6 border-b border-dashed border-[#E9CFF7]">
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      width={36}
+                      height={36}
+                    />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                      <h3 className="font-heading text-xl tracking-tight">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+              <motion.div
+              variants={fadeUp}
+              className="flex mt-8 flex-wrap items-center gap-4"
+            >
+              <a
+                href="#explore"
+                className="
+                  group
+                  inline-flex items-center gap-2.5
+                  px-7 py-3.5
+                  rounded-[100px]
+                  border border-[#7E4BA4]
+                  bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                  text-white font-semibold text-sm
+                  shadow-lg shadow-violet-900/20
+                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:shadow-xl hover:shadow-violet-900/30
+                  hover:-translate-y-1
+                  hover:scale-[1.03]
+                  active:scale-[0.98]
+                "
+              >
+                Explore More
+                <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </a>
+            </motion.div>
+            </div>
           </FadeIn>
         </div>
       </div>

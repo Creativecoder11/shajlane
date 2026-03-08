@@ -7,9 +7,9 @@ import WhyUs from "@/components/sections/why-us";
 import Testimonials from "@/components/sections/testimonials";
 import QualityCompliance from "@/components/sections/quality-compliance";
 import Faq from "@/components/sections/faq";
-import AppDownload from "@/components/sections/app-download";
 import Footer from "@/components/sections/footer";
 import LogoMarquee from "@/components/sections/logo-marque";
+import CTA from "@/components/sections/CTA";
 
 export default function HomePage() {
   return (
@@ -22,9 +22,8 @@ export default function HomePage() {
       <WeServe />
       <WhyUs />
       <Testimonials />
-      <QualityCompliance />
       <Faq />
-      <AppDownload />
+      <CTA />
       <Footer />
     </main>
   );

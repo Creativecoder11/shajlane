@@ -1,97 +1,100 @@
 "use client"
 
 import Container from "@/components/sections/container"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Instagram, Linkedin, Youtube } from "lucide-react"
+import { Facebook, Instagram, Linkedin, ArrowUp, Twitter } from "lucide-react"
+import Image from "next/image"
 
 const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#why-us", label: "Why Us?" },
-  { href: "#we-serve", label: "We Serve" },
-  { href: "#testimonials", label: "Testimonials" },
-  { href: "#contact", label: "Network" },
+  "Home",
+  "About",
+  "Why Us?",
+  "We Serve",
+  "Testimonials",
+  "Network",
 ]
 
 export default function Footer() {
   return (
-    <footer id="contact" className="mt-8 bg-[#0b0712] text-white">
-      <Container className="py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr,0.8fr,1fr]">
-          <div className="space-y-3">
-            <p className="font-heading text-2xl">Shajlane</p>
-            <p className="text-sm text-white/70 max-w-md">
-              Modern B2B beauty distribution with authenticity, verified suppliers,
-              and efficient fulfillment for professionals.
+    <footer className="relative bg-[#07030F] text-white overflow-hidden">
+      <div className="py-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-3 gap-16">
+
+          {/* LEFT */}
+          <div className="space-y-6 max-w-md">
+            <div className="flex items-center gap-3">
+              <Image src="/assets/icon/shajlane-white-logo.svg" width={120} height={60} alt="Shajlane Logo" />
+            </div>
+
+            <p className="text-white/70 text-sm leading-relaxed">
+              Lorem ipsum dolor sit amet consectetur. Dolor semper
+              egestas venenatis euismod donec dolor. Aenean
+              imperdiet non.
             </p>
-            <div className="flex items-center gap-3 pt-2 text-white/70">
-              <a aria-label="Instagram" href="#" className="hover:text-white transition">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a aria-label="LinkedIn" href="#" className="hover:text-white transition">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a aria-label="YouTube" href="#" className="hover:text-white transition">
-                <Youtube className="h-5 w-5" />
-              </a>
+
+            {/* newsletter line */}
+            <div className="pt-10">
+              <div className="flex items-center justify-between border-b border-dashed border-white/30 pb-2 text-sm text-white/70">
+                <span>Subscribe To Our Newsletter</span>
+                <ArrowUp className="h-4 w-4 rotate-45" />
+              </div>
             </div>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-white/70">
-              Navigation
-            </p>
-            <ul className="space-y-2 text-sm text-white/70">
-              {links.map((l) => (
-                <li key={l.href}>
-                  <a href={l.href} className="hover:text-white transition">
-                    {l.label}
+          {/* NAVIGATION */}
+          <div className="lg:pl-20">
+            <ul className="space-y-4 text-white/80">
+              {links.map((link) => (
+                <li key={link}>
+                  <a
+                    href="#"
+                    className="hover:text-white transition"
+                  >
+                    {link}
                   </a>
                 </li>
               ))}
-              <li>
-                <a href="#contact" className="hover:text-white transition">
-                  Social Media
-                </a>
-              </li>
             </ul>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-xs font-semibold tracking-[0.25em] uppercase text-white/70">
-              Newsletter
-            </p>
-            <p className="text-sm text-white/70">
-              Subscribe for updates on new brands and B2B distribution insights.
-            </p>
-            <div className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="Your email"
-                className="bg-white/10 border-white/15 text-white placeholder:text-white/40 rounded-full"
-              />
-              <Button className="rounded-full px-6">Subscribe</Button>
+          {/* SOCIAL */}
+          <div className="space-y-6">
+            <p className="text-white/80 font-medium">Social Media</p>
+
+            <div className="flex gap-4">
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
+                <Facebook size={18} />
+              </div>
+
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
+                <Instagram size={18} />
+              </div>
+
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
+                <Twitter size={18} />
+              </div>
+
+              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
+                <Linkedin size={18} />
+              </div>
             </div>
           </div>
         </div>
 
-        <Separator className="my-10 bg-white/10" />
-
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-white/60">
+        {/* Divider */}
+        <div className="border-t border-dashed border-white/20 mt-20 pt-6 flex flex-col md:flex-row justify-between text-sm text-white/60">
           <p>© 2025 Shajlane. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-white transition">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition">
-              Terms and Conditions
-            </a>
+
+          <div className="flex gap-6">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms and Conditions</a>
           </div>
         </div>
-      </Container>
+      </div>
+
+      {/* Decorative shape */}
+      <div className="absolute -right-20 -bottom-20  pointer-events-none">
+        <Image src="/assets/icon/leaf-icon.svg" className="w-full" width={100} height={200} alt="Leaf Icon" />
+      </div>
     </footer>
   )
 }
-
