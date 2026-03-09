@@ -1,6 +1,5 @@
 "use client"
 
-import Container from "@/components/sections/container"
 import FadeIn from "@/components/sections/fade-in"
 import {
   Accordion,
@@ -61,7 +60,7 @@ export default function Faq() {
                 variants={fadeUp}
                 className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[1.08] tracking-tight text-gray-900"
               >
-                Everything You Need To
+                Everything You Need To {" "}
                 <span className="relative inline-block text-6xl font-semibold tracking-tight">
                   <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
                     Know
@@ -99,33 +98,36 @@ export default function Faq() {
         </div>
 
         {/* FAQ List */}
-        <div className="mx-auto mt-10 max-w-[1440px] px-4 sm:px-6 lg:px-8 space-y-6">
-          <Accordion type="single" collapsible defaultValue="item-0" className="space-y-8">
+        <div className="mx-auto mt-10 max-w-360 px-4 sm:px-6 lg:px-8 space-y-6">
+          <Accordion type="single" collapsible defaultValue="item-1" className="space-y-8">
             {faqs.map((item, idx) => (
               <div key={item.q} className="relative">
 
                 {/* dashed outer border */}
-                <div className="absolute -inset-1 rounded-[8px] border border-dashed border-[#EACCF6]" />
+                <div className="absolute -inset-1 rounded-xl border border-dashed border-[#FFD7FF]" />
 
-                <AccordionItem
-                  value={`item-${idx}`}
-                  className="relative rounded-[8px] border border-[#0D0C1D] border-r-[4px] border-b-[4px] bg-white px-6 py-2"
+                {/* gradient border wrapper */}
+                <div
+                  className="relative rounded-xl bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]"
+                  style={{ padding: "1px 4px 4px 1px" }}
                 >
-
-                  <AccordionTrigger className="text-left text-lg font-semibold">
-                    <span className="flex items-center gap-4">
-                      <span className="text-gray-700">
-                        {String(idx + 1).padStart(2, "0")}.
+                  <AccordionItem
+                    value={`item-${idx}`}
+                    className="font-body relative rounded-xl bg-white px-6 py-2"
+                  >
+                    <AccordionTrigger className="text-[#0D0C1D] text-left text-xl font-semibold cursor-pointer">
+                      <span className="flex items-center gap-4">
+                        <span>{String(idx + 1).padStart(2, "0")}.</span>
+                        {item.q}
                       </span>
-                      {item.q}
-                    </span>
-                  </AccordionTrigger>
+                    </AccordionTrigger>
 
-                  <AccordionContent className="pt-4 text-muted-foreground leading-relaxed">
-                    {item.a}
-                  </AccordionContent>
+                    <AccordionContent className="text-base text-[#5B5B68] leading-relaxed">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                </div>
 
-                </AccordionItem>
               </div>
             ))}
           </Accordion>

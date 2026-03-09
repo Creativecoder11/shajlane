@@ -133,7 +133,7 @@ function GooglePlayBadge() {
 /* ─── Hero ───────────────────────────────────────── */
 export default function Hero() {
   return (
-    <section className="relative  w-full bg-white ">
+    <section className="relative w-full bg-white">
       {/* Gradient container */}
       <div
         className="max-w-8xl min-h-[90vh] m-10 rounded-2xl overflow-hidden relative"

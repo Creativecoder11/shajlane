@@ -10,28 +10,28 @@ const items = [
     title: "Global Brand Sourcing",
     description:
       "Curated access to premium beauty brands through reliable procurement channels and authenticity controls.",
-    Icon: Globe,
+    img: "/assets/icon/globe.svg",
   },
   {
     id: "02",
     title: "Wholesale Distribution Solutions",
     description:
       "Flexible ordering, competitive pricing, and consistent replenishment built for multi-location businesses.",
-    Icon: Boxes,
+    img: "/assets/icon/supply.svg",
   },
   {
     id: "03",
     title: "Reliable Supply Chain",
     description:
       "Efficient warehousing and last-mile delivery workflows to keep your shelves stocked and customers happy.",
-    Icon: Truck,
+    img: "/assets/icon/chain.svg",
   },
   {
     id: "04",
     title: "Technology-Driven Ordering",
     description:
       "A streamlined ordering experience with visibility, tracking, and support—built for B2B operations.",
-    Icon: Sparkles,
+    img: "/assets/icon/technology.svg",
   },
 ];
 
@@ -47,7 +47,7 @@ const fadeUp = {
 export default function WhatWeDo() {
   return (
     <section className="section-y bg-[#F9FAFB]">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-360 px-4 md:px-0">
         {/* Header */}
         <div className="mx-auto text-center">
           <FadeIn className="space-y-3">
@@ -64,9 +64,9 @@ export default function WhatWeDo() {
 
               <motion.h1
                 variants={fadeUp}
-                className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[1.08] tracking-tight text-gray-900"
+                className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[76.8px] tracking-tight text-gray-900"
               >
-                Complete Wholesale <br /> Beauty
+                Complete Wholesale <br /> Beauty {" "}
                 <span className="relative inline-block text-6xl font-semibold tracking-tight">
                   <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
                     Supply Solutions
@@ -105,37 +105,45 @@ export default function WhatWeDo() {
 
         {/* Cards */}
         <div className="mt-16 grid gap-10 lg:grid-cols-4 ">
-          {items.map(({ id, title, description, Icon }, idx) => (
+          {items.map(({ id, title, description, img }, idx) => (
             <FadeIn key={title} delay={0.05 * idx}>
               <div
-                className={`relative ${
-                  idx === 1 || idx === 3 ? "lg:mt-14" : ""
-                }`}
+                className={`relative ${idx === 1 || idx === 3 ? "lg:mt-14" : ""
+                  }`}
               >
-                <div className="absolute -inset-1 rounded-[26px] border border-dashed border-gray-300"></div>
+                <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]"></div>
                 {/* main card */}
                 <div
-                  className="relative h-full rounded-[22px] border-t-[1px] border-l-[1px] border-r-[4px] border-b-[4px] border-[#0D0C1D] bg-[#FCF7FF] p-8 shadow-sm"
+                  className="relative h-full bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
+                  style={{ padding: "1px 4px 4px 1px" }}
                 >
-                  {/* number */}
-                  <div className="absolute right-6 top-10 flex h-12 w-12 items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-lg font-semibold text-[#7E4BA4]">
-                    {id}
+                  <div className="relative h-full rounded-[22px] bg-[#FCF7FF] p-8 shadow-sm">
+                    {/* number */}
+                    <div className="absolute right-6 top-10 flex h-12 w-12 items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-lg font-semibold text-[#7E4BA4]">
+                      {id}
+                    </div>
+
+                    {/* icon */}
+                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 md:w-9 md:h-9 object-contain"
+                      />
+                    </div>
+
+                    {/* title */}
+                    <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug mr-5">
+                      {title}
+                    </h3>
+
+                    {/* description */}
+                    <p className="mt-3 text-muted-foreground leading-relaxed text-lg">
+                      {description}
+                    </p>
                   </div>
-
-                  {/* icon */}
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
-                    <Icon className="h-7 w-7 text-white" />
-                  </div>
-
-                  {/* title */}
-                  <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug mr-5">
-                    {title}
-                  </h3>
-
-                  {/* description */}
-                  <p className="mt-3 text-muted-foreground leading-relaxed text-lg">
-                    {description}
-                  </p>
                 </div>
               </div>
             </FadeIn>

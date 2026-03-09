@@ -2,14 +2,14 @@ import Header from "@/components/sections/header";
 import Hero from "@/components/sections/hero";
 import About from "@/components/sections/about";
 import WhatWeDo from "@/components/sections/what-we-do";
-import WeServe from "@/components/sections/we-serve";
-import WhyUs from "@/components/sections/why-us";
+import ChooseUs from "@/components/sections/ChooseUs";
 import Testimonials from "@/components/sections/testimonials";
-import QualityCompliance from "@/components/sections/quality-compliance";
+import QualityCompliance from "@/components/sections/QualityCompliance";
 import Faq from "@/components/sections/faq";
 import Footer from "@/components/sections/footer";
 import LogoMarquee from "@/components/sections/logo-marque";
 import CTA from "@/components/sections/CTA";
+import Serve from "@/components/sections/serve";
 
 export default function HomePage() {
   return (
@@ -19,8 +19,9 @@ export default function HomePage() {
       <LogoMarquee />
       <About />
       <WhatWeDo />
-      <WeServe />
-      <WhyUs />
+      <QualityCompliance />
+      <ChooseUs />
+      <Serve />
       <Testimonials />
       <Faq />
       <CTA />

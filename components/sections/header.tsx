@@ -37,14 +37,13 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-          scrolled
-            ? "bg-white/95  backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
-            : "bg-transparent mt-14"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${scrolled
+          ? "bg-white/95  backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
+          : "bg-transparent mt-14"
+          }`}
       >
-        <div className="max-w-8xl mx-20 px-6 lg:px-10">
-          <nav className="flex items-center justify-between h-[68px]">
+        <div className="max-w-8xl mx-auto md:px-16">
+          <nav className="flex items-center justify-between h-17">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 group">
               <Image src={"/assets/icon/shajlane - logo.svg"} alt="Shajlane Logo" width={120} height={32} />
@@ -56,11 +55,10 @@ export default function Navbar() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className={`relative px-4 py-2 text-lg font-light rounded-lg transition-colors duration-200 group ${
-                      scrolled
-                        ? "text-gray-600 hover:text-violet-700"
-                        : "text-gray-700 hover:text-violet-700"
-                    }`}
+                    className={`relative px-4 py-2 text-lg rounded-lg transition-colors duration-200 group ${scrolled
+                      ? "text-[#5B5B68] hover:text-violet-700"
+                      : "text-gray-700 hover:text-violet-700"
+                      }`}
                   >
                     {link.label}
                     <span className="absolute bottom-1 left-4 right-4 h-[1.5px] rounded-full bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
@@ -72,12 +70,12 @@ export default function Navbar() {
             {/* CTA */}
             <div className="hidden md:block">
               <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap items-center gap-4"
-            >
-              <a
-                href="#explore"
-                className="
+                variants={fadeUp}
+                className="flex flex-wrap items-center gap-4"
+              >
+                <a
+                  href="#explore"
+                  className="
                   group
                   inline-flex items-center gap-2.5
                   px-7 py-3.5
@@ -92,10 +90,10 @@ export default function Navbar() {
                   hover:scale-[1.03]
                   active:scale-[0.98]
                 "
-              >
-                Contact us
-              </a>
-            </motion.div>
+                >
+                  Contact us
+                </a>
+              </motion.div>
             </div>
 
             {/* Mobile hamburger */}

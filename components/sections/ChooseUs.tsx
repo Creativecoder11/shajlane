@@ -1,6 +1,6 @@
 "use client";
+
 import FadeIn from "@/components/sections/fade-in";
-import { Globe, Boxes, Truck, Sparkles } from "lucide-react";
 import { cubicBezier, motion } from "framer-motion";
 import Image from "next/image";
 
@@ -10,21 +10,21 @@ const items = [
     title: "Premium Quality",
     description:
       "We deliver professional-grade beauty products ensuring consistent performance, safety, and trusted results.",
-    Icon: Globe,
+    img: "/assets/icon/chooseUs1.svg",
   },
   {
     id: "02",
     title: "Wholesale Distribution Solutions",
     description:
       "Flexible ordering, competitive pricing, and consistent replenishment built for multi-location businesses.",
-    Icon: Boxes,
+    img: "/assets/icon/chooseUs2.svg",
   },
   {
     id: "03",
     title: "Reliable Supply Chain",
     description:
       "Efficient warehousing and last-mile delivery workflows to keep your shelves stocked and customers happy.",
-    Icon: Truck,
+    img: "/assets/icon/chooseUs3.svg",
   },
 ];
 
@@ -37,10 +37,10 @@ const fadeUp = {
   },
 };
 
-export default function WhyUs() {
+export default function ChooseUs() {
   return (
     <section className="section-y bg-[#F9FAFB]">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-360 px-4 md:px-0">
         {/* Header */}
         <div className="mx-auto text-center">
           <FadeIn className="space-y-3">
@@ -97,33 +97,40 @@ export default function WhyUs() {
         </div>
 
         {/* Cards */}
-        <div className="mt-16 grid gap-10 lg:grid-cols-3 ">
-          {items.map(({ id, title, description, Icon }, idx) => (
+        <div className="mt-16 grid gap-8 md:grid-cols-3 ">
+          {items.map(({ id, title, description, img }, idx) => (
             <FadeIn key={title} delay={0.05 * idx}>
-              <div
-                className={`relative ${
-                  idx === 1 || idx === 3 ? "lg:mt-14" : ""
-                }`}
-              >
-                <div className="absolute -inset-1 rounded-[26px] border border-dashed border-gray-300"></div>
-                {/* main card */}
-                <div className="relative h-full rounded-[22px] border-t-[1px] border-l-[1px] border-r-[4px] border-b-[4px] border-[#0D0C1D] bg-white hover:bg-[#FCF7FF] p-6 shadow-sm">
+              <div className="relative">
+                {/* dashed outer border */}
+                <div className="absolute -inset-1 rounded-[24px] border border-dashed border-[#FFD7FF]" />
 
-                  {/* icon */}
-                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl">
-                    <Icon className="h-7 w-7 text-black" />
-                  </div>
+                {/* gradient border wrapper */}
+                <div
+                  className="relative rounded-[22px] bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]"
+                  style={{ padding: "1px 4px 4px 1px" }}
+                >
+                  {/* main card */}
+                  <div className="relative h-full rounded-[22px] bg-white hover:bg-[#FCF7FF] p-6 shadow-sm group transition-colors duration-300">
 
-                  <div className="bg-[#FCF7FF] p-4 rounded-lg border border-[#FFD7FF]">
-                    {/* title */}
-                  <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug mr-5">
-                    {title}
-                  </h3>
+                    {/* icon */}
+                    <div className="mb-16 flex h-16 w-16 items-center justify-center rounded-xl">
+                      <Image
+                        src={img}
+                        alt={title}
+                        width={68}
+                        height={68}
+                        className="w-10 h-10 md:w-17 md:h-17 object-contain"
+                      />
+                    </div>
 
-                  {/* description */}
-                  <p className="mt-3 text-muted-foreground leading-tight text-lg">
-                    {description}
-                  </p>
+                    <div className="bg-[#FCF7FF] group-hover:bg-white p-5 rounded-lg border border-[#FFD7FF] transition-colors duration-300">
+                      <h3 className="text-2xl font-sans font-semibold text-[#0D0C1D] leading-snug">
+                        {title}
+                      </h3>
+                      <p className="mt-3 text-[#5B5B68] text-lg">
+                        {description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,11 +1,11 @@
 "use client";
 
-import Container from "@/components/sections/container";
 import FadeIn from "@/components/sections/fade-in";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import { motion, cubicBezier } from "framer-motion";
+import { div } from "framer-motion/client";
 
 const testimonials = [
   {
@@ -44,6 +44,12 @@ const testimonials = [
     image: "/assets/avatar/6.png",
     body: "Lorem ipsum dolor sit amet consectetur. In nulla euismod ut et lacus. Viverra lectus lacus aliquet et dignissim quam sed. Sed.",
   },
+  {
+    name: "Eleanor Pena",
+    company: "Jam Beauty",
+    image: "/assets/avatar/7.png",
+    body: "Lorem ipsum dolor sit amet consectetur. In nulla euismod ut et lacus. Viverra lectus lacus aliquet et dignissim quam sed. Sed.",
+  },
 ];
 
 const fadeUp = {
@@ -57,32 +63,46 @@ const fadeUp = {
 
 function TestimonialCard({ t }: any) {
   return (
-    <div className="w-[420px] mx-6 bg-white rounded-[20px] border border-[#0D0C1D] border-r-[4px] border-b-[4px] shadow-sm relative p-6">
-      {/* stars */}
-      <div className="absolute top-6 right-6 flex gap-1">
-        {[...Array(5)].map((_, i) => (
-          <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
-        ))}
-      </div>
+    <div className="w-[320px] md:w-105 mx-4">
+      <div className="relative rounded-4xl bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]"
+        style={{ padding: "1px 4px 4px 1px" }}
+      >
+        <div className="relative bg-white rounded-4xl shadow-sm p-6">
+          <div className="flex space-between items-end">
+            {/* quote */}
+            <Image
+              src="/assets/icon/quote.svg"
+              alt="quote"
+              width={40}
+              height={40}
+              className="w-7 h-7 md:w-15 md:h-15"
+            />
+            {/* stars */}
+            <div className="absolute top-6 right-6 flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={18} className="fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+          </div>
 
-      {/* user */}
-      <div className="flex items-center gap-4 mt-6">
-        <Image
-          src={t.image}
-          alt={t.name}
-          width={48}
-          height={48}
-          className="rounded-full object-cover"
-        />
-
-        <div>
-          <p className="text-lg font-semibold text-[#7E4BA4]">{t.name}</p>
-          <p className="text-sm text-gray-500">{t.company}</p>
+          {/* user */}
+          <div className="flex items-center gap-4 md:mt-4">
+            <Image
+              src={t.image}
+              alt={t.name}
+              width={56}
+              height={56}
+              className="w-9 h-9 md:w-14 md:h-14 rounded-full object-cover"
+            />
+            <div>
+              <p className="text-base md:text-xl font-semibold text-[#7E4BA4]">{t.name}</p>
+              <p className="text-sm md:text-base font-medium text-[#5B5B68]">{t.company}</p>
+            </div>
+          </div>
+          {/* text */}
+          <p className="mt-4 text-[#5B5B68] text-sm md:text-base leading-relaxed">{t.body}</p>
         </div>
       </div>
-
-      {/* text */}
-      <p className="mt-4 text-gray-600 text-sm leading-relaxed">{t.body}</p>
     </div>
   );
 }
@@ -92,7 +112,7 @@ export default function Testimonials() {
   const row2 = testimonials.slice(3);
 
   return (
-    <section className="py-20 bg-[#F9F7FC] overflow-hidden">
+    <section className="section-y bg-[#F9F7FC] overflow-hidden">
       {/* Header */}
       <div className="mx-auto text-center">
         <FadeIn className="space-y-3">
@@ -104,17 +124,17 @@ export default function Testimonials() {
                 width={24}
                 height={24}
               />
-              FAQ
+              TESTIMONIALs
             </span>
 
             <motion.h1
               variants={fadeUp}
               className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[1.08] tracking-tight text-gray-900"
             >
-              Everything You Need To
+              Trusted By Beauty Industry <br />
               <span className="relative inline-block text-6xl font-semibold tracking-tight">
                 <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
-                  Know
+                  Professionals
                 </span>
 
                 <motion.svg
@@ -164,7 +184,7 @@ export default function Testimonials() {
       </div>
 
       {/* row 2 */}
-      <div className="mt-10">
+      <div className="mt-9">
         <Marquee
           speed={45}
           gradient={false}
