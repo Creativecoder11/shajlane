@@ -1,36 +1,51 @@
 "use client";
 import FadeIn from "@/components/sections/fade-in";
-import { Globe, Boxes, Truck, Sparkles } from "lucide-react";
 import { cubicBezier, motion } from "framer-motion";
 import Image from "next/image";
 
 const items = [
   {
     id: "01",
-    title: "Global Brand Sourcing",
+    title: (
+      <>
+        Global Brand <br /> Sourcing
+      </>
+    ),
     description:
-      "Curated access to premium beauty brands through reliable procurement channels and authenticity controls.",
+      "We partner directly with authorized brands and verified suppliers worldwide to ensure genuine, high-quality inventory.",
     img: "/assets/icon/globe.svg",
   },
   {
     id: "02",
-    title: "Wholesale Distribution Solutions",
+    title: (
+      <>
+        Wholesale <br /> Distribution Solutions
+      </>
+    ),
     description:
-      "Flexible ordering, competitive pricing, and consistent replenishment built for multi-location businesses.",
+      "Competitive B2B pricing structures designed to maximize your margins and improve profitability.",
     img: "/assets/icon/supply.svg",
   },
   {
     id: "03",
-    title: "Reliable Supply Chain",
+    title: (
+      <>
+        Reliable <br /> Supply Chain
+      </>
+    ),
     description:
-      "Efficient warehousing and last-mile delivery workflows to keep your shelves stocked and customers happy.",
+      "Reliable stock management and fast fulfillment to keep your shelves and online stores consistently supplied.",
     img: "/assets/icon/chain.svg",
   },
   {
     id: "04",
-    title: "Technology-Driven Ordering",
+    title: (
+      <>
+        Technology-Driven <br /> Ordering
+      </>
+    ),
     description:
-      "A streamlined ordering experience with visibility, tracking, and support—built for B2B operations.",
+      "Efficient order processing and reliable logistics ensure timely delivery for uninterrupted business operations.",
     img: "/assets/icon/technology.svg",
   },
 ];
@@ -106,7 +121,7 @@ export default function WhatWeDo() {
         {/* Cards */}
         <div className="mt-16 grid gap-10 lg:grid-cols-4 ">
           {items.map(({ id, title, description, img }, idx) => (
-            <FadeIn key={title} delay={0.05 * idx}>
+            <FadeIn key={id} delay={0.05 * idx}>
               <div
                 className={`relative ${idx === 1 || idx === 3 ? "lg:mt-14" : ""
                   }`}
@@ -114,28 +129,30 @@ export default function WhatWeDo() {
                 <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]"></div>
                 {/* main card */}
                 <div
-                  className="relative h-full bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
+                  className="relative bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
                   style={{ padding: "1px 4px 4px 1px" }}
                 >
-                  <div className="relative h-full rounded-[22px] bg-[#FCF7FF] p-8 shadow-sm">
-                    {/* number */}
-                    <div className="absolute right-6 top-10 flex h-12 w-12 items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-lg font-semibold text-[#7E4BA4]">
-                      {id}
-                    </div>
+                  <div className="rounded-[22px] bg-[#FCF7FF] p-8 shadow-sm">
 
-                    {/* icon */}
-                    <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
-                      <Image
-                        src={img}
-                        alt={title}
-                        width={24}
-                        height={24}
-                        className="w-6 h-6 md:w-9 md:h-9 object-contain"
-                      />
+                    <div className="flex items-center justify-between mb-12">
+                      {/* icon */}
+                      <div className="flex p-4 items-center justify-center rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
+                        <Image
+                          src={img}
+                          alt={id}
+                          width={24}
+                          height={24}
+                          className="w-6 h-6 md:w-9 md:h-9 object-contain"
+                        />
+                      </div>
+                      {/* number */}
+                      <div className="w-12 h-12 flex items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-lg landing-none font-semibold text-[#7E4BA4]">
+                        {id}
+                      </div>
                     </div>
 
                     {/* title */}
-                    <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug mr-5">
+                    <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug">
                       {title}
                     </h3>
 

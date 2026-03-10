@@ -15,14 +15,12 @@ export default function LogoMarquee() {
   ];
 
   return (
-    <div className="bg-white py-6 flex flex-col items-center gap-6">
-      <p className="text-2xl font-semibold text-center">Trusted by Leading Beauty Brands</p>
-      <Marquee
-        speed={50}
-        pauseOnHover={true}
-        gradient={false}
-        autoFill={true}
-      >
+    <div className="bg-white pb-7 flex flex-col items-center gap-6">
+      <p className="text-[#5B5B68] text-2xl font-semibold text-center">
+        Trusted by Leading Beauty Brands
+      </p>
+
+      <Marquee speed={50} gradient={false} autoFill>
         {images.map((src, index) => (
           <div key={index} className="mx-10">
             <Image
@@ -30,7 +28,7 @@ export default function LogoMarquee() {
               alt={`brand-${index}`}
               width={120}
               height={60}
-              className="object-cover height-[60px]"
+              className="object-contain h-15 grayscale hover:grayscale-0 transition duration-300"
             />
           </div>
         ))}

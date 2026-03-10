@@ -170,7 +170,7 @@ export default function About() {
                   <Counter value={s.value} suffix={s.suffix} start={inView} />
                 </div>
 
-                <div className="mt-1 text-lg text-muted-foreground">
+                <div className="mt-2 text-lg text-muted-foreground">
                   {s.label}
                 </div>
               </div>

@@ -1,8 +1,8 @@
 "use client"
 
-import Container from "@/components/sections/container"
-import { Facebook, Instagram, Linkedin, ArrowUp, Twitter } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Twitter, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react"
 import Image from "next/image"
+import { useState } from "react"
 
 const links = [
   "Home",
@@ -13,16 +13,82 @@ const links = [
   "Network",
 ]
 
+type Status = "idle" | "loading" | "success" | "error"
+
 export default function Footer() {
+  const [email, setEmail] = useState("")
+  const [focused, setFocused] = useState(false)
+  const [status, setStatus] = useState<Status>("idle")
+  const [errorMsg, setErrorMsg] = useState("")
+
+  const isValidEmail = (val: string) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+
+  const handleSubscribe = async () => {
+    const trimmed = email.trim()
+
+    if (!trimmed) {
+      setErrorMsg("Please enter your email.")
+      setStatus("error")
+      return
+    }
+    if (!isValidEmail(trimmed)) {
+      setErrorMsg("Please enter a valid email address.")
+      setStatus("error")
+      return
+    }
+
+    setStatus("loading")
+    setErrorMsg("")
+
+    // Simulate API call
+    await new Promise((res) => setTimeout(res, 1200))
+
+    // Replace this block with your real API call, e.g.:
+    // const res = await fetch("/api/newsletter", { method: "POST", body: JSON.stringify({ email: trimmed }) })
+    // if (!res.ok) { setStatus("error"); setErrorMsg("Something went wrong."); return }
+
+    setStatus("success")
+    setEmail("")
+  }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") handleSubscribe()
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+    if (status === "error") {
+      setStatus("idle")
+      setErrorMsg("")
+    }
+    if (status === "success") setStatus("idle")
+  }
+
+  const borderColor =
+    status === "error"
+      ? "border-red-400"
+      : status === "success"
+      ? "border-green-400"
+      : focused
+      ? "border-white/60"
+      : "border-white/30"
+
   return (
     <footer className="relative bg-[#07030F] text-white overflow-hidden">
-      <div className="py-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-3 gap-16">
+      <div className="py-20 max-w-8xl mx-auto md:px-16">
+        <div className="flex justify-between items-start gap-16">
 
           {/* LEFT */}
           <div className="space-y-6 max-w-md">
             <div className="flex items-center gap-3">
-              <Image src="/assets/icon/shajlane-white-logo.svg" width={120} height={60} alt="Shajlane Logo" />
+              <Image
+                src="/assets/icon/shajlane-white-logo.svg"
+                alt="Shajlane Logo"
+                width={120}
+                height={60}
+                className="w-20 h-8 md:w-41 md:h-16 object-contain"
+              />
             </div>
 
             <p className="text-white/70 text-sm leading-relaxed">
@@ -31,50 +97,87 @@ export default function Footer() {
               imperdiet non.
             </p>
 
-            {/* newsletter line */}
-            <div className="pt-10">
-              <div className="flex items-center justify-between border-b border-dashed border-white/30 pb-2 text-sm text-white/70">
-                <span>Subscribe To Our Newsletter</span>
-                <ArrowUp className="h-4 w-4 rotate-45" />
+            {/* Newsletter */}
+            <div className="pt-10 space-y-2">
+              <div
+                className={`relative flex items-center border-b border-dashed pb-2 text-sm transition-colors duration-200 ${borderColor}`}
+              >
+                {status === "success" ? (
+                  <span className="flex items-center gap-2 text-green-400 text-sm w-full">
+                    <CheckCircle2 size={15} />
+                    You&apos;re subscribed! Thank you.
+                  </span>
+                ) : (
+                  <>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={handleChange}
+                      onKeyDown={handleKeyDown}
+                      onFocus={() => setFocused(true)}
+                      onBlur={() => setFocused(false)}
+                      placeholder="Subscribe To Our Newsletter"
+                      className="bg-transparent w-full pr-9 outline-none placeholder-white/50 text-white text-sm"
+                      disabled={status === "loading"}
+                    />
+
+                    <button
+                      onClick={handleSubscribe}
+                      disabled={status === "loading"}
+                      aria-label="Subscribe"
+                      className={`absolute right-0 top-1/2 -translate-y-1/2 h-6 w-6 flex items-center justify-center rounded-full transition-all duration-200
+                        ${status === "loading"
+                          ? "bg-white/10 cursor-not-allowed"
+                          : "bg-white/10 hover:bg-white hover:text-black cursor-pointer"
+                        } text-white/70 hover:text-black`}
+                    >
+                      {status === "loading" ? (
+                        <Loader2 size={13} className="animate-spin" />
+                      ) : (
+                        <ArrowUpRight size={13} />
+                      )}
+                    </button>
+                  </>
+                )}
               </div>
+
+              {/* Error message */}
+              {status === "error" && errorMsg && (
+                <p className="text-red-400 text-xs pl-0.5">{errorMsg}</p>
+              )}
             </div>
           </div>
 
           {/* NAVIGATION */}
-          <div className="lg:pl-20">
+          <div className="flex justify-between gap-40 max-w-md">
             <ul className="space-y-4 text-white/80">
               {links.map((link) => (
                 <li key={link}>
                   <a
                     href="#"
-                    className="hover:text-white transition"
+                    className="relative inline-block transition-colors duration-200 hover:text-white
+                      after:absolute after:left-0 after:bottom-0 after:h-[2.5px] after:w-0
+                      after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                      after:transition-all after:duration-300 hover:after:w-full"
                   >
                     {link}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* SOCIAL */}
-          <div className="space-y-6">
-            <p className="text-white/80 font-medium">Social Media</p>
-
-            <div className="flex gap-4">
-              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
-                <Facebook size={18} />
-              </div>
-
-              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
-                <Instagram size={18} />
-              </div>
-
-              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
-                <Twitter size={18} />
-              </div>
-
-              <div className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black">
-                <Linkedin size={18} />
+            {/* SOCIAL */}
+            <div className="space-y-6">
+              <p className="text-white/80 font-medium">Social Media</p>
+              <div className="flex gap-4">
+                {[Facebook, Instagram, Twitter, Linkedin].map((Icon, i) => (
+                  <div
+                    key={i}
+                    className="h-10 w-10 flex items-center justify-center rounded-full bg-white text-black hover:bg-[#7E4BA4] hover:text-white transition-all duration-300 cursor-pointer"
+                  >
+                    <Icon size={20} />
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -82,18 +185,39 @@ export default function Footer() {
 
         {/* Divider */}
         <div className="border-t border-dashed border-white/20 mt-20 pt-6 flex flex-col md:flex-row justify-between text-sm text-white/60">
-          <p>© 2025 Shajlane. All rights reserved.</p>
-
+          <p>© {new Date().getFullYear()} Shajlane. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms and Conditions</a>
+            <a
+              href="#"
+              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-200
+                after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
+                after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="#"
+              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-200
+                after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
+                after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                after:transition-all after:duration-300 hover:after:w-full"
+            >
+              Terms and Conditions
+            </a>
           </div>
         </div>
       </div>
 
       {/* Decorative shape */}
-      <div className="absolute -right-20 -bottom-20  pointer-events-none">
-        <Image src="/assets/icon/leaf-icon.svg" className="w-full" width={100} height={200} alt="Leaf Icon" />
+      <div className="absolute -right-20 -bottom-20 pointer-events-none">
+        <Image
+          src="/assets/icon/leaf-icon.svg"
+          className="w-full"
+          width={100}
+          height={200}
+          alt="Leaf Icon"
+        />
       </div>
     </footer>
   )
