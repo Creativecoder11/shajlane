@@ -2,6 +2,7 @@
 import FadeIn from "@/components/sections/fade-in";
 import { cubicBezier, motion } from "framer-motion";
 import Image from "next/image";
+import SectionHeader, { GradientText, GradientUnderline } from "../ui/SectionHeader";
 
 const items = [
   {
@@ -62,64 +63,31 @@ const fadeUp = {
 export default function WhatWeDo() {
   return (
     <section className="section-y bg-[#F9FAFB]">
-      <div className="mx-auto max-w-360 px-4 md:px-0">
+      <div className="mx-auto md:max-w-360 px-4 md:px-0">
         {/* Header */}
         <div className="mx-auto text-center">
           <FadeIn className="space-y-3">
             <div className="flex flex-col items-center justify-center gap-2">
-              <span className="flex items-center gap-2 text-xl font-medium text-[#7E4BA4] uppercase">
-                <Image
-                  src="/assets/icon/about-icon.svg"
-                  alt="About Shajlane"
-                  width={24}
-                  height={24}
-                />
-                WHAT WE DO
-              </span>
-
-              <motion.h1
-                variants={fadeUp}
-                className="text-[2.6rem] sm:text-[3.2rem] lg:text-6xl font-semibold leading-[76.8px] tracking-tight text-gray-900"
-              >
-                Complete Wholesale <br /> Beauty {" "}
-                <span className="relative inline-block text-6xl font-semibold tracking-tight">
-                  <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
-                    Supply Solutions
-                  </span>
-
-                  <motion.svg
-                    viewBox="0 0 500 40"
-                    className="absolute left-0 -bottom-4 w-full"
-                    fill="none"
-                  >
-                    <motion.path
-                      d="M10 25 Q250 5 490 25"
-                      stroke="url(#gradient)"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{
-                        duration: 1.2,
-                        ease: "easeInOut",
-                        delay: 0.3,
-                      }}
-                    />
-                    <defs>
-                      <linearGradient id="gradient" x1="0" x2="1" y1="0" y2="0">
-                        <stop offset="0%" stopColor="#7E4BA4" />
-                        <stop offset="100%" stopColor="#301C3E" />
-                      </linearGradient>
-                    </defs>
-                  </motion.svg>
-                </span>
-              </motion.h1>
+              <SectionHeader
+                align="center"
+                label="WHAT WE DO"
+                heading={
+                  <>
+                    Complete Wholesale <br />
+                    Beauty{" "}
+                    <span className="relative inline-block">
+                      <GradientText>Supply Solutions</GradientText>
+                      <GradientUnderline bottom="-12px" mdBottom="-24px" />
+                    </span>
+                  </>
+                }
+              />
             </div>
           </FadeIn>
         </div>
 
         {/* Cards */}
-        <div className="mt-16 grid gap-10 lg:grid-cols-4 ">
+        <div className="mt-8 d:mt-16 grid gap-6 md:gap-10 lg:grid-cols-4">
           {items.map(({ id, title, description, img }, idx) => (
             <FadeIn key={id} delay={0.05 * idx}>
               <div
@@ -132,32 +100,32 @@ export default function WhatWeDo() {
                   className="relative bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
                   style={{ padding: "1px 4px 4px 1px" }}
                 >
-                  <div className="rounded-[22px] bg-[#FCF7FF] p-8 shadow-sm">
+                  <div className="rounded-[22px] bg-[#FCF7FF] p-5 md:p-8 shadow-sm">
 
-                    <div className="flex items-center justify-between mb-12">
+                    <div className="flex items-center justify-between mb-8 md:mb-12">
                       {/* icon */}
-                      <div className="flex p-4 items-center justify-center rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
+                      <div className="flex p-3 md:p-4 items-center justify-center rounded-md md:rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
                         <Image
                           src={img}
                           alt={id}
                           width={24}
                           height={24}
-                          className="w-6 h-6 md:w-9 md:h-9 object-contain"
+                          className="w-7 h-7 md:w-9 md:h-9 object-contain"
                         />
                       </div>
                       {/* number */}
-                      <div className="w-12 h-12 flex items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-lg landing-none font-semibold text-[#7E4BA4]">
+                      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-base md:text-lg landing-none font-semibold text-[#7E4BA4]">
                         {id}
                       </div>
                     </div>
 
                     {/* title */}
-                    <h3 className="text-2xl font-sans font-semibold text-gray-900 leading-snug">
+                    <h3 className="text-xl md:text-2xl font-sans font-semibold text-gray-900 leading-snug">
                       {title}
                     </h3>
 
                     {/* description */}
-                    <p className="mt-3 text-muted-foreground leading-relaxed text-lg">
+                    <p className="mt-3 text-muted-foreground leading-relaxed text-base md:text-lg">
                       {description}
                     </p>
                   </div>

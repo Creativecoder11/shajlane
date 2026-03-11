@@ -69,15 +69,15 @@ export default function Footer() {
     status === "error"
       ? "border-red-400"
       : status === "success"
-      ? "border-green-400"
-      : focused
-      ? "border-white/60"
-      : "border-white/30"
+        ? "border-green-400"
+        : focused
+          ? "border-white/60"
+          : "border-white/30"
 
   return (
     <footer className="relative bg-[#07030F] text-white overflow-hidden">
-      <div className="py-20 max-w-8xl mx-auto md:px-16">
-        <div className="flex justify-between items-start gap-16">
+      <div className="py-12 md:py-20 max-w-8xl mx-auto px-4 md:px-16">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-16">
 
           {/* LEFT */}
           <div className="space-y-6 max-w-md">
@@ -87,7 +87,7 @@ export default function Footer() {
                 alt="Shajlane Logo"
                 width={120}
                 height={60}
-                className="w-20 h-8 md:w-41 md:h-16 object-contain"
+                className="w-30 h-12 md:w-41 md:h-16 object-contain"
               />
             </div>
 
@@ -98,7 +98,7 @@ export default function Footer() {
             </p>
 
             {/* Newsletter */}
-            <div className="pt-10 space-y-2">
+            <div className="mt-5 md:pt-10 space-y-2">
               <div
                 className={`relative flex items-center border-b border-dashed pb-2 text-sm transition-colors duration-200 ${borderColor}`}
               >
@@ -149,7 +149,7 @@ export default function Footer() {
           </div>
 
           {/* NAVIGATION */}
-          <div className="flex justify-between gap-40 max-w-md">
+          <div className="flex justify-between gap-16 md:gap-40 max-w-md">
             <ul className="space-y-4 text-white/80">
               {links.map((link) => (
                 <li key={link}>
@@ -184,7 +184,7 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-dashed border-white/20 mt-20 pt-6 flex flex-col md:flex-row justify-between text-sm text-white/60">
+        <div className="border-t border-dashed border-white/20 mt-20 pt-6 flex flex-col md:flex-row justify-center items-center md:justify-between gap-2 text-sm text-white/60">
           <p>© {new Date().getFullYear()} Shajlane. All rights reserved.</p>
           <div className="flex gap-6">
             <a

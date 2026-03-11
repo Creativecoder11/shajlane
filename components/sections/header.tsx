@@ -37,9 +37,9 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${scrolled
-          ? "bg-white/95  backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
-          : "bg-transparent mt-14"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out mx-4 md:mx-0 ${scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
+          : "bg-transparent mt-4 md:mt-14"
           }`}
       >
         <div className="max-w-8xl mx-auto md:px-16">

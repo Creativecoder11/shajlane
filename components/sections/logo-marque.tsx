@@ -15,8 +15,8 @@ export default function LogoMarquee() {
   ];
 
   return (
-    <div className="bg-white pb-7 flex flex-col items-center gap-6">
-      <p className="text-[#5B5B68] text-2xl font-semibold text-center">
+    <div className="bg-white pb-7 flex flex-col items-center gap-4 md:gap-6">
+      <p className="text-[#5B5B68] text-lg md:text-2xl font-semibold text-center">
         Trusted by Leading Beauty Brands
       </p>
 
@@ -28,7 +28,7 @@ export default function LogoMarquee() {
               alt={`brand-${index}`}
               width={120}
               height={60}
-              className="object-contain h-15 grayscale hover:grayscale-0 transition duration-300"
+              className="object-contain h-8 md:h-15 grayscale hover:grayscale-0 transition duration-300"
             />
           </div>
         ))}

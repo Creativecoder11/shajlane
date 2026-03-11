@@ -9,7 +9,7 @@ import Faq from "@/components/sections/faq";
 import Footer from "@/components/sections/footer";
 import LogoMarquee from "@/components/sections/logo-marque";
 import CTA from "@/components/sections/CTA";
-import Serve from "@/components/sections/serve";
+import Products from "@/components/sections/Products";
 
 export default function HomePage() {
   return (
@@ -21,7 +21,7 @@ export default function HomePage() {
       <WhatWeDo />
       <QualityCompliance />
       <ChooseUs />
-      <Serve />
+      <Products />
       <Testimonials />
       <Faq />
       <CTA />
