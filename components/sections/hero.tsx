@@ -107,7 +107,7 @@ function GooglePlayBadge() {
       className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gray-950 text-white hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-900/20 transition-all duration-200 group"
     >
       <Image
-        src={"/assets/icon/play store icon.svg"}
+        src={"/assets/icon/play_store_icon.svg"}
         alt="Google Play"
         width={24}
         height={24}
