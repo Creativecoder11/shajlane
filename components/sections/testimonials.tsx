@@ -53,7 +53,7 @@ const testimonials = [
 
 function TestimonialCard({ t }: any) {
   return (
-    <div className="w-[320px] md:w-105 mx-4">
+    <div className="w-[320px] md:w-105 mx-4 pt-4">
       <div className="relative">
         {/* dashed outer border */}
         <div className="absolute -inset-1 rounded-[36px] border border-dashed border-[#FFD7FF]" />
@@ -131,7 +131,7 @@ export default function Testimonials() {
       </div>
 
       {/* row 1 */}
-      <div className="mt-7 md:mt-10">
+      <div className="mt-3 md:mt-6">
         <Marquee speed={45} gradient={false} pauseOnHover autoFill direction="left">
           {row1.map((t, i) => (
             <TestimonialCard key={i} t={t} />
@@ -140,7 +140,7 @@ export default function Testimonials() {
       </div>
 
       {/* row 2 */}
-      <div className="mt-5 md:mt-9">
+      <div className="mt-1 md:mt-5">
         <Marquee speed={45} gradient={false} pauseOnHover autoFill direction="right">
           {row2.map((t, i) => (
             <TestimonialCard key={i} t={t} />

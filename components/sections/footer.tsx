@@ -210,10 +210,10 @@ export default function Footer() {
       </div>
 
       {/* Decorative shape */}
-      <div className="absolute -right-20 -bottom-20 pointer-events-none">
+      <div className="absolute -right-10 -bottom-10 pointer-events-none">
         <Image
           src="/assets/icon/leaf-icon.svg"
-          className="w-full"
+          className="w-full h-80 md:h-full object-contain"
           width={100}
           height={200}
           alt="Leaf Icon"

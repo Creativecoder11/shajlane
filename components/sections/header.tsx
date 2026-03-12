@@ -42,7 +42,7 @@ export default function Navbar() {
           : "bg-transparent mt-4 md:mt-14"
           }`}
       >
-        <div className="max-w-8xl mx-auto md:px-16">
+        <div className="w-full md:max-w-8xl mx-auto md:px-16">
           <nav className="flex items-center justify-between h-17">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2 group">
