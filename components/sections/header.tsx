@@ -37,7 +37,7 @@ export default function Navbar() {
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out mx-4 md:mx-0 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-6 md:mx-0 ${scrolled
           ? "bg-white/95 backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
           : "bg-transparent mt-4 md:mt-14"
           }`}
@@ -115,9 +115,9 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden bg-white/98 backdrop-blur-md border-t border-gray-100 overflow-hidden"
+              className="md:hidden bg-white/98 backdrop-blur-md border-t rounded-2xl border-gray-100 overflow-hidden"
             >
-              <div className="max-w-[1280px] mx-auto px-6 py-4 flex flex-col gap-1">
+              <div className="max-w-[1280px] mx-auto px py-4 flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <a
                     key={link.label}
@@ -130,7 +130,7 @@ export default function Navbar() {
                 ))}
                 <a
                   href="#contact"
-                  className="mt-2 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
+                  className="mt-2 m-4 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
                 >
                   Contact Us
                 </a>

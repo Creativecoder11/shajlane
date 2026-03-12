@@ -85,8 +85,8 @@ function FloatingBadge({
       }}
       className={`
         absolute flex items-center gap-2
-        px-3.5 py-2 rounded-full
-        shadow-2xl text-base font-light tracking-wide
+        px-2 md:px-3.5 py-1 md:py-2 rounded-full
+        shadow-2xl text-[12px] md:text-base font-light tracking-wide
         backdrop-blur-sm
         border-t-[0.5px] border-l-[0.5px]
         border-r-2 border-b-2
@@ -133,7 +133,7 @@ function ArrowAuthenticProducts() {
       height="100"
       viewBox="0 0 116 100"
       fill="none"
-      className="absolute top-[148px] left-[40px] w-[116px] h-[100px] pointer-events-none"
+      className="absolute top-[70px] md:top-[148px] left-[20px] md:left-[40px] w-[116px] h-[60px] md:h-[100px] pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1.1, duration: 0.3 }}
@@ -160,7 +160,7 @@ function ArrowVerifiedSuppliers() {
       height="72"
       viewBox="0 0 130 72"
       fill="none"
-      className="absolute -right-2 top-[155px] w-[130px] h-[72px] md:right-8 pointer-events-none"
+      className="absolute -right-1 top-[95px] md:top-[155px] w-[130px] md:h-[72px] h-[50px] md:right-8 pointer-events-none"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1.3, duration: 0.3 }}
@@ -183,7 +183,7 @@ export default function Hero() {
   return (
     <section className="relative w-full bg-white">
       <div
-        className="max-w-8xl min-h-[90vh] m-10 rounded-2xl overflow-hidden relative"
+        className="max-w-8xl min-h-[100vh] md:min-h-[90vh]  m-3 md:m-10 rounded-2xl overflow-hidden relative"
         style={{
           backgroundImage: "url('/assets/herobg.svg')",
           backgroundSize: "cover",
@@ -195,7 +195,7 @@ export default function Hero() {
         <div className="absolute bottom-[-60px] left-[5%] w-[280px] h-[280px] rounded-full bg-[#FFFFFF] blur-[70px] pointer-events-none" />
 
         <motion.div
-          className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 px-8 sm:px-12 lg:px-16 pt-28 items-center"
+          className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 px-4 sm:px-12 lg:px-16 pt-28 items-center"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -204,7 +204,7 @@ export default function Hero() {
           <div className="flex flex-col gap-6 max-w-auto">
             <motion.h1
               variants={fadeUp}
-              className="text-[2.6rem] sm:text-[3.2rem] lg:text-7xl font-semibold leading-[1.08] tracking-tight text-gray-900"
+              className="font-semibold leading-[1.08] tracking-tight text-gray-900 mt-2 md:mt-4 text-[40px] sm:text-5xl lg:text-7xl"
             >
               Authentic Beauty
               <br />
@@ -219,7 +219,7 @@ export default function Hero() {
                 Built for
               </span>
               <br />
-              <span className="relative inline-block text-7xl font-semibold tracking-tight">
+              <span className="relative inline-block text-[40px] sm:text-5xl lg:text-7xl font-semibold tracking-tight">
                 <span className="bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] bg-clip-text text-transparent">
                   Business
                 </span>
@@ -288,7 +288,7 @@ export default function Hero() {
           {/* ── RIGHT ── */}
           <motion.div
             variants={phoneVariant}
-            className="relative bottom-0 top-18 flex justify-center lg:justify-end items-center lg:pr-8"
+            className="relative bottom-0 top-2 md:top-18 flex justify-center lg:justify-end items-center lg:pr-8"
           >
             <div className="relative">
               <Image
@@ -306,7 +306,7 @@ export default function Hero() {
                 height="33"
                 viewBox="0 0 37 33"
                 fill="none"
-                className="absolute -top-6 right-40"
+                className="absolute -top-6 md:right-42 right-20"
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
@@ -328,7 +328,7 @@ export default function Hero() {
               <FloatingBadge
                 label="Authentic Products"
                 color="yellow"
-                className="top-[80px] -rotate-20"
+                className="top-[20px] -rotate-20"
                 delay={0}
                 rotateRange={[-2, 4]}
               />
@@ -343,7 +343,7 @@ export default function Hero() {
               <FloatingBadge
                 label="Verified Suppliers"
                 color="green"
-                className="-right-12 top-[260px] lg:-right-0"
+                className="-right-2 md:top-[260px] top-[150px] lg:-right-0"
                 delay={1}
                 rotateRange={[-12, 4]}
               />
@@ -351,7 +351,7 @@ export default function Hero() {
               <FloatingBadge
                 label="Best Price Guaranteed"
                 color="blue"
-                className="left-16 bottom-[80px] rotate-20"
+                className="left-0 md:left-16 md:bottom-[80px] bottom-[90px] rotate-20"
                 delay={2}
                 rotateRange={[8, -6]}
               />

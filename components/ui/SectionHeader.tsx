@@ -17,7 +17,7 @@ const fadeUp = {
 const sizeMap = {
     72: "text-[40px] lg:text-[72px]",
     64: "text-[36px] lg:text-[64px]",
-    48: "text-[28px] lg:text-[48px]",
+    48: "text-[30px] lg:text-[48px]",
 } as const;
 
 type HeadingSize = keyof typeof sizeMap;
