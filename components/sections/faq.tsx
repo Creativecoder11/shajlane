@@ -74,14 +74,14 @@ export default function Faq() {
                     value={`item-${idx}`}
                     className="font-body relative rounded-xl bg-white px-3 md:px-6 md:py-2"
                   >
-                    <AccordionTrigger className="text-[#0D0C1D] text-left text-base md:text-xl font-semibold cursor-pointer">
+                    <AccordionTrigger className="text-[#0D0C1D] text-left text-lg md:text-xl font-semibold cursor-pointer">
                       <span className="flex items-center gap-4">
                         <span>{String(idx + 1).padStart(2, "0")}.</span>
                         {item.q}
                       </span>
                     </AccordionTrigger>
 
-                    <AccordionContent className="text-sm md:text-base text-[#5B5B68] leading-relaxed">
+                    <AccordionContent className="text-base text-[#5B5B68] leading-relaxed">
                       {item.a}
                     </AccordionContent>
                   </AccordionItem>

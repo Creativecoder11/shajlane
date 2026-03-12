@@ -91,7 +91,7 @@ export default function Footer() {
               />
             </div>
 
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-base md:text-lg leading-relaxed">
               Lorem ipsum dolor sit amet consectetur. Dolor semper
               egestas venenatis euismod donec dolor. Aenean
               imperdiet non.

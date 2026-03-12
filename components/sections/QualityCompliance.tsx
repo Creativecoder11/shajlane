@@ -115,7 +115,7 @@ export default function QualityCompliance() {
                       </div>
 
                       {/* Right: description */}
-                      <p className="text-[#5B5B68] text-sm md:text-base md:w-3/5 leading-relaxed">
+                      <p className="text-[#5B5B68] text-base md:w-3/5 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
