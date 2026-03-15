@@ -13,38 +13,44 @@ const navLinks = [
   { label: "We Serve", href: "#we-serve" },
   { label: "Testimonials", href: "#testimonials" },
 ];
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.72, ease: cubicBezier(0.22, 1, 0.36, 1) },
-  },
-};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    // Set initial scroll state immediately
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out px-6 md:mx-0 ${scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
-          : "bg-transparent mt-4 md:mt-14"
-          }`}
+      <header
+        className={`
+          fixed top-0 left-0 right-0 z-50 px-6 md:mx-0
+          transition-[background-color,box-shadow,padding] duration-300 ease-in-out
+          ${!mounted
+            ? "bg-transparent pt-4 md:pt-14"
+            : scrolled
+              ? "bg-white/95 backdrop-blur-md shadow-[0_1px_24px_rgba(109,40,217,0.08)]"
+              : "bg-transparent pt-4 md:pt-14"
+          }
+        `}
+        style={{
+          // Prevent Safari from flickering with will-change
+          WebkitBackfaceVisibility: "hidden",
+          backfaceVisibility: "hidden",
+          WebkitTransform: "translateZ(0)",
+          transform: "translateZ(0)",
+        }}
       >
-        <div className="w-full md:max-w-8xl mx-auto md:px-16">
-          <nav className="flex items-center justify-between h-17">
+        <div className="max-w-8xl mx-auto md:px-16">
+          <nav className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
               <Image
@@ -52,6 +58,7 @@ export default function Navbar() {
                 alt="Shajlane Logo"
                 width={120}
                 height={32}
+                priority
               />
             </Link>
 
@@ -75,31 +82,26 @@ export default function Navbar() {
 
             {/* CTA */}
             <div className="hidden md:block">
-              <motion.div
-                variants={fadeUp}
-                className="flex flex-wrap items-center gap-4"
+              <a
+                href="#footer"
+                className="
+            group
+            inline-flex items-center gap-2.5
+            px-7 py-3.5
+            rounded-[100px]
+            border border-[#7E4BA4]
+            bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+            text-white font-semibold text-sm
+            shadow-lg shadow-violet-900/20
+            transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+            hover:shadow-xl hover:shadow-violet-900/30
+            hover:-translate-y-1
+            hover:scale-[1.03]
+            active:scale-[0.98]
+            "
               >
-                <a
-                  href="#footer"
-                  className="
-                  group
-                  inline-flex items-center gap-2.5
-                  px-7 py-3.5
-                  rounded-[100px]
-                  border border-[#7E4BA4]
-                  bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
-                  text-white font-semibold text-sm
-                  shadow-lg shadow-violet-900/20
-                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-                  hover:shadow-xl hover:shadow-violet-900/30
-                  hover:-translate-y-1
-                  hover:scale-[1.03]
-                  active:scale-[0.98]
-                "
-                >
-                  Contact us
-                </a>
-              </motion.div>
+                Contact us
+              </a>
             </div>
 
             {/* Mobile hamburger */}
@@ -111,40 +113,42 @@ export default function Navbar() {
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </nav>
-        </div>
+        </div >
 
         {/* Mobile menu */}
         <AnimatePresence>
-          {mobileOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: "easeInOut" }}
-              className="md:hidden bg-white/98 backdrop-blur-md border-t rounded-2xl border-gray-100 overflow-hidden"
-            >
-              <div className="max-w-[1280px] mx-auto px py-4 flex flex-col gap-1">
-                {navLinks.map((link) => (
+          {
+            mobileOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.25, ease: "easeInOut" }}
+                className="md:hidden bg-white/98 backdrop-blur-md border-t rounded-2xl border-gray-100 overflow-hidden"
+              >
+                <div className="max-w-[1280px] mx-auto py-4 flex flex-col gap-1">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="px-4 py-3 rounded-xl text-gray-700 text-sm font-medium hover:bg-violet-50 hover:text-violet-700 transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
                   <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="px-4 py-3 rounded-xl text-gray-700 text-sm font-medium hover:bg-violet-50 hover:text-violet-700 transition-colors"
+                    href="#contact"
+                    className="mt-2 m-4 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
                   >
-                    {link.label}
+                    Contact Us
                   </a>
-                ))}
-                <a
-                  href="#contact"
-                  className="mt-2 m-4 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
-                >
-                  Contact Us
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
+                </div >
+              </motion.div >
+            )
+          }
+        </AnimatePresence >
+      </header >
     </>
   );
 }
