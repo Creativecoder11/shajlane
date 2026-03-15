@@ -39,7 +39,6 @@ const fadeUp = {
   },
 };
 
-// Isolated card component so each card manages its own hover + animation state
 function ChooseUsCard({
   id,
   title,
@@ -57,21 +56,13 @@ function ChooseUsCard({
   const controls = useAnimation();
 
   useEffect(() => {
-    if (hovered) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    if (hovered) controls.start("visible");
+    else controls.start("hidden");
   }, [hovered, controls]);
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.7, rotate: -15 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      rotate: 0,
-      transition: { duration: 0.35, ease: easeOut },
-    },
+    visible: { opacity: 1, scale: 1, rotate: 0, transition: { duration: 0.35, ease: easeOut } },
   };
 
   const pathVariants = {
@@ -85,14 +76,13 @@ function ChooseUsCard({
 
   return (
     <FadeIn delay={0.05 * idx}>
-      {/* overflow-visible is critical so the absolutely positioned SVG renders outside card bounds */}
       <div
         className="relative group"
         style={{ overflow: "visible" }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        {/* Animated spark SVG — positioned OUTSIDE the card (top-right) */}
+        {/* Animated spark */}
         <motion.svg
           xmlns="http://www.w3.org/2000/svg"
           width="37"
@@ -131,10 +121,10 @@ function ChooseUsCard({
           />
         </motion.svg>
 
-        {/* dashed outer border */}
+        {/* dashed border */}
         <div className="absolute -inset-1 rounded-[24px] border border-dashed border-[#FFD7FF]" />
 
-        {/* gradient border wrapper */}
+        {/* gradient border */}
         <div
           className="relative rounded-[22px] bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]"
           style={{ padding: "1px 4px 4px 1px" }}

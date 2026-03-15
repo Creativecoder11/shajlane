@@ -61,7 +61,7 @@ export default function Navbar() {
                       }`}
                   >
                     {link.label}
-                    <span className="absolute bottom-1 left-4 right-4 h-[1.5px] rounded-full bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                    <span className="absolute bottom-1 left-4 right-4 h-[2.5px] rounded-full bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                   </a>
                 </li>
               ))}

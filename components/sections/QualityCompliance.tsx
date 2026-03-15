@@ -94,12 +94,48 @@ function FloatingBadge({
   );
 }
 
+
+const container = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.14,
+      delayChildren: 0.15,
+    },
+  },
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.72, ease: cubicBezier(0.22, 1, 0.36, 1) },
+  },
+};
+
+const fadeSlide = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
+  },
+};
+
+const listItem = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 
@@ -119,7 +155,7 @@ export default function QualityCompliance() {
           />
 
           <div>
-            {/* Arrow lines */}          
+            {/* Arrow lines */}
             <svg
               className="absolute top-20 right-24 md:top-35 md:right-35 w-18 h-18 md:w-[126px] md:h-[100px]"
               width="125"
@@ -174,10 +210,39 @@ export default function QualityCompliance() {
         </div>
 
         {/* Right content */}
-        <div className="md:w-1/2 text-left">
+        <motion.div
+          className="md:w-1/2 text-left"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.14,
+                delayChildren: 0.15,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+        >
           <div className="md:w-175">
             <FadeIn className="space-y-4">
-              <div className="flex flex-col items-left justify-center gap-2">
+              {/* Heading */}
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 28 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: cubicBezier(0.22, 1, 0.36, 1),
+                    },
+                  },
+                }}
+                className="flex flex-col items-left justify-center gap-2"
+              >
                 <SectionHeader
                   size={48}
                   label="QUALITY & COMPLIANCE"
@@ -191,58 +256,97 @@ export default function QualityCompliance() {
                     </>
                   }
                 />
-              </div>
-              <p className="text-base md:text-lg text-[#5B5B68] leading-relaxed mt-3 md:mt-6 mb-4 md:mb-8">
+              </motion.div>
+
+              {/* Paragraph */}
+              <motion.p
+                variants={{
+                  hidden: { opacity: 0, y: 28 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.7,
+                      ease: cubicBezier(0.22, 1, 0.36, 1),
+                    },
+                  },
+                }}
+                className="text-base md:text-lg text-[#5B5B68] leading-relaxed mt-3 md:mt-6 mb-4 md:mb-8"
+              >
                 We ensure top-quality products by strictly following compliance
                 standards, delivering safe, reliable, and trustworthy beauty
                 solutions every time.
-              </p>
+              </motion.p>
+
+              {/* Categories */}
               <div>
                 {categories.map((item, idx) => (
-                  <FadeIn key={item.title} delay={0.04 * idx}>
-                    <div className="flex flex-col md:flex-row gap-2 md:gap-4 py-4 md:py-6 border-b border-dashed border-[#E9CFF7]">
-                      {/* Left: icon + title */}
-                      <div className="flex items-center gap-2 md:gap-4 md:w-3/5">
-                        <Image
-                          src={item.icon}
-                          alt={item.title}
-                          width={40}
-                          height={40}
-                          className="w-10 h-10 md:w-12 md:h-12 object-contain"
-                        />
-                        <h3 className="text-base md:text-lg font-semibold text-[#0D0C1D] leading-snug">
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      {/* Right: description */}
-                      <p className="text-[#5B5B68] text-base md:w-3/5 leading-relaxed">
-                        {item.desc}
-                      </p>
+                  <motion.div
+                    key={item.title}
+                    variants={{
+                      hidden: { opacity: 0, y: 24 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.55,
+                          ease: cubicBezier(0.22, 1, 0.36, 1),
+                        },
+                      },
+                    }}
+                    whileHover={{ y: -4 }}
+                    transition={{ type: "spring", stiffness: 260, damping: 18 }}
+                    className="flex flex-col md:flex-row gap-2 md:gap-4 py-4 md:py-6 border-b border-dashed border-[#E9CFF7]"
+                  >
+                    {/* Left: icon + title */}
+                    <div className="flex items-center gap-2 md:gap-4 md:w-3/5">
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        width={40}
+                        height={40}
+                        className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                      />
+                      <h3 className="text-base md:text-lg font-semibold text-[#0D0C1D] leading-snug">
+                        {item.title}
+                      </h3>
                     </div>
-                  </FadeIn>
+
+                    {/* Right: description */}
+                    <p className="text-[#5B5B68] text-base md:w-3/5 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </motion.div>
                 ))}
+
+                {/* Button */}
                 <motion.div
-                  variants={fadeUp}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    ease: cubicBezier(0.22, 1, 0.36, 1),
+                  }}
+                  viewport={{ once: true }}
                   className="flex mt-8 flex-wrap items-center gap-4"
                 >
                   <a
                     href="#explore"
                     className="
-                  group
-                  inline-flex items-center gap-2.5
-                  px-7 py-3.5
-                  rounded-[100px]
-                  border border-[#7E4BA4]
-                  bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
-                  text-white font-semibold text-sm
-                  shadow-lg shadow-violet-900/20
-                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-                  hover:shadow-xl hover:shadow-violet-900/30
-                  hover:-translate-y-1
-                  hover:scale-[1.03]
-                  active:scale-[0.98]
-                "
+              group
+              inline-flex items-center gap-2.5
+              px-7 py-3.5
+              rounded-[100px]
+              border border-[#7E4BA4]
+              bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+              text-white font-semibold text-sm
+              shadow-lg shadow-violet-900/20
+              transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+              hover:shadow-xl hover:shadow-violet-900/30
+              hover:-translate-y-1
+              hover:scale-[1.03]
+              active:scale-[0.98]
+            "
                   >
                     Explore More
                     <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -251,7 +355,7 @@ export default function QualityCompliance() {
               </div>
             </FadeIn>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

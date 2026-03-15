@@ -53,7 +53,7 @@ const testimonials = [
 
 function TestimonialCard({ t }: any) {
   return (
-    <div className="w-[320px] md:w-105 mx-4 pt-4">
+    <div className="w-[320px] md:w-105 mx-4 pt-4 overflow-hidden">
       <div className="relative">
         {/* dashed outer border */}
         <div className="absolute -inset-1 rounded-[36px] border border-dashed border-[#FFD7FF]" />

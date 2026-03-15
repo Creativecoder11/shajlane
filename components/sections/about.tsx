@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { motion, cubicBezier } from "framer-motion";
 import FadeIn from "@/components/sections/fade-in";
-import Image from "next/image";
-import { cubicBezier, motion } from "framer-motion";
 import SectionHeader, { GradientText, GradientUnderline } from "../ui/SectionHeader";
 
 const stats = [
@@ -13,34 +12,21 @@ const stats = [
   { value: 99, suffix: "%", label: "Partner Satisfaction Rate" },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.72, ease: cubicBezier(0.22, 1, 0.36, 1) },
-  },
-};
+const ease = cubicBezier(0.22, 1, 0.36, 1);
 
 function useCounter(end: number, duration = 2000, start = false) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!start) return;
-
     let startTime: number | null = null;
 
     const animate = (time: number) => {
       if (!startTime) startTime = time;
-
       const progress = time - startTime;
       const value = Math.min(Math.floor((progress / duration) * end), end);
-
       setCount(value);
-
-      if (progress < duration) {
-        requestAnimationFrame(animate);
-      }
+      if (progress < duration) requestAnimationFrame(animate);
     };
 
     requestAnimationFrame(animate);
@@ -49,23 +35,9 @@ function useCounter(end: number, duration = 2000, start = false) {
   return count;
 }
 
-function Counter({
-  value,
-  suffix,
-  start,
-}: {
-  value: number;
-  suffix: string;
-  start: boolean;
-}) {
+function Counter({ value, suffix, start }: { value: number; suffix: string; start: boolean }) {
   const count = useCounter(value, 2000, start);
-
-  return (
-    <>
-      {count.toLocaleString()}
-      {suffix}
-    </>
-  );
+  return <>{count.toLocaleString()}{suffix}</>;
 }
 
 export default function About() {
@@ -74,23 +46,11 @@ export default function About() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-        }
-      },
+      ([entry]) => { if (entry.isIntersecting) setInView(true); },
       { threshold: 0.3 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
   }, []);
 
   return (
@@ -100,6 +60,7 @@ export default function About() {
       className="section-y max-w-360 mx-auto px-4 md:px-0"
     >
       <div>
+        {/* ── Header row ── */}
         <FadeIn className="space-y-3 flex flex-col md:flex-row md:items-end">
           <div className="md:w-1/2">
             <SectionHeader
@@ -117,30 +78,60 @@ export default function About() {
             />
           </div>
 
-          <div className="md:w-1/2">
+          {/* Paragraph — slides in from right */}
+          <motion.div
+            className="md:w-1/2"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.72, ease, delay: 0.2 }}
+          >
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Shajlane is a dedicated B2B beauty distribution platform built to
               serve professionals. We deliver premium beauty brands at
               competitive wholesale pricing, helping salons, retailers, and
               resellers grow sustainably.
             </p>
-          </div>
+          </motion.div>
         </FadeIn>
 
-        {/* STATS */}
-        <div className="mt-6 md:mt-10 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
+        {/* ── Divider ── */}
+        <motion.div
+          className="mt-8 md:mt-12 h-px bg-gradient-to-r from-transparent via-[#7E4BA4]/30 to-transparent"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, ease, delay: 0.1 }}
+          style={{ transformOrigin: "center" }}
+        />
+
+        {/* ── Stats grid ── */}
+        <div className="mt-8 md:mt-10 grid grid-cols-2 gap-6 sm:gap-8 lg:grid-cols-4">
           {stats.map((s, idx) => (
-            <FadeIn key={s.label} delay={0.04 * idx} className="text-left">
-              <div>
-                <div className="font-heading font-semibold text-4xl md:text-5xl text-foreground">
-                  <Counter value={s.value} suffix={s.suffix} start={inView} />
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease, delay: 0.1 + idx * 0.1 }}
+              className="relative group text-left"
+            >
+              {/* Hover glow card */}
+              <div className="relative rounded-lg p-4 md:p-5 transition-colors duration-300 group-hover:bg-[#7E4BA4]/5">
+                {/* Counter */}
+                <div className="font-heading font-semibold text-4xl md:text-5xl text-foreground transition-colors duration-300 group-hover:text-[#7E4BA4]">
+                  {inView
+                    ? <Counter value={s.value} suffix={s.suffix} start={inView} />
+                    : <>0{s.suffix}</>
+                  }
                 </div>
 
+                {/* Label */}
                 <div className="mt-1 md:mt-2 text-sm md:text-lg text-muted-foreground">
                   {s.label}
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
         </div>
       </div>
