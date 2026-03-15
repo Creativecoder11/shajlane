@@ -28,7 +28,7 @@ const Products = () => {
     };
 
     return (
-        <div className="section-y overflow-hidden">
+        <div className="section-y overflow-hidden" id="we-serve">
             {/* Header */}
             <motion.div
                 variants={container}

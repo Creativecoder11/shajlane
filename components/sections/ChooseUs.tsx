@@ -157,7 +157,7 @@ function ChooseUsCard({
 
 export default function ChooseUs() {
   return (
-    <section className="section-y bg-[#F9FAFB]">
+    <section className="section-y bg-[#F9FAFB]" id="why-us">
       <div className="mx-auto max-w-360 px-4 md:px-0">
         {/* Header */}
         <div className="mx-auto text-center">

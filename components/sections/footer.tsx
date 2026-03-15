@@ -2,9 +2,17 @@
 
 import { Facebook, Instagram, Linkedin, Twitter, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
-const links = ["Home", "About", "Why Us?", "We Serve", "Testimonials", "Network"];
+const links = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "#about" },
+  { label: "Why Us?", href: "#why-us" },
+  { label: "We Serve", href: "#we-serve" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Network", href: "#network" },
+];
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -56,25 +64,27 @@ export default function Footer() {
     status === "error"
       ? "border-red-400"
       : status === "success"
-      ? "border-green-400"
-      : focused
-      ? "border-white/60"
-      : "border-white/30";
+        ? "border-green-400"
+        : focused
+          ? "border-white/60"
+          : "border-white/30";
 
   return (
-    <footer className="relative bg-[#07030F] text-white overflow-hidden">
+    <footer className="relative bg-[#07030F] text-white overflow-hidden" id="footer">
       <div className="py-12 md:py-20 max-w-8xl mx-auto px-4 md:px-16">
         <div className="flex flex-col md:flex-row justify-between items-start gap-16">
           {/* LEFT */}
           <div className="space-y-6 max-w-md">
             <div className="flex items-center gap-3">
-              <Image
-                src="/assets/icon/shajlane-white-logo.svg"
-                alt="Shajlane Logo"
-                width={120}
-                height={60}
-                className="w-30 h-12 md:w-41 md:h-16 object-contain"
-              />
+              <Link href="/">
+                <Image
+                  src="/assets/icon/shajlane-white-logo.svg"
+                  alt="Shajlane Logo"
+                  width={120}
+                  height={60}
+                  className="w-32 h-12 md:w-40 md:h-16 object-contain"
+                />
+              </Link>
             </div>
 
             <p className="text-white/70 text-base md:text-lg leading-relaxed">
@@ -136,15 +146,15 @@ export default function Footer() {
           <div className="flex justify-between gap-16 md:gap-40 max-w-md">
             <ul className="space-y-4 text-white/80">
               {links.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="relative inline-block transition-colors duration-300 hover:text-white
-                      after:absolute after:left-0 after:bottom-0 after:h-[2.5px] after:w-0
-                      after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
-                      after:transition-all after:duration-300 hover:after:w-full"
+          after:absolute after:left-0 after:bottom-0 after:h-[2.5px] after:w-0
+          after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+          after:transition-all after:duration-300 hover:after:w-full"
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}

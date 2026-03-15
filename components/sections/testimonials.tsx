@@ -110,7 +110,7 @@ export default function Testimonials() {
   const row2 = testimonials.slice(3);
 
   return (
-    <section className="section-y bg-[#F9F7FC] overflow-hidden">
+    <section className="section-y bg-[#F9F7FC] overflow-hidden" id="testimonials">
       {/* Header */}
       <div className="mx-auto text-center">
         <FadeIn className="space-y-3">

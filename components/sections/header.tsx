@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence, cubicBezier } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const navLinks = [
   { label: "Home", href: "#" },
@@ -45,9 +46,14 @@ export default function Navbar() {
         <div className="w-full md:max-w-8xl mx-auto md:px-16">
           <nav className="flex items-center justify-between h-17">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2 group">
-              <Image src={"/assets/icon/shajlane - logo.svg"} alt="Shajlane Logo" width={120} height={32} />
-            </a>
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image
+                src="/assets/icon/shajlane - logo.svg"
+                alt="Shajlane Logo"
+                width={120}
+                height={32}
+              />
+            </Link>
 
             {/* Center Nav Links */}
             <ul className="hidden md:flex items-center gap-1">
@@ -74,7 +80,7 @@ export default function Navbar() {
                 className="flex flex-wrap items-center gap-4"
               >
                 <a
-                  href="#explore"
+                  href="#footer"
                   className="
                   group
                   inline-flex items-center gap-2.5
