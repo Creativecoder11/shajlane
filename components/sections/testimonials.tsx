@@ -4,6 +4,7 @@ import FadeIn from "@/components/sections/fade-in";
 import Marquee from "react-fast-marquee";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { useState, useEffect } from "react";
 import SectionHeader, { GradientText, GradientUnderline } from "../ui/SectionHeader";
 
 const testimonials = [
@@ -53,7 +54,16 @@ const testimonials = [
 
 function TestimonialCard({ t }: any) {
   return (
-    <div className="w-[320px] md:w-105 mx-4 pt-4 overflow-hidden">
+    <div
+      className="w-[320px] md:w-105 mx-4 pt-4 overflow-hidden"
+      // Force GPU layer on each card — prevents Safari subpixel flicker
+      style={{
+        WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
+        WebkitBackfaceVisibility: "hidden",
+        backfaceVisibility: "hidden",
+      }}
+    >
       <div className="relative">
         {/* dashed outer border */}
         <div className="absolute -inset-1 rounded-[36px] border border-dashed border-[#FFD7FF]" />
@@ -105,6 +115,51 @@ function TestimonialCard({ t }: any) {
   );
 }
 
+function MarqueeRow({
+  items,
+  direction,
+  delay = 0,
+}: {
+  items: typeof testimonials;
+  direction: "left" | "right";
+  delay?: number;
+}) {
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    // Small delay before starting animation — lets the browser
+    // fully paint the layout first, eliminating the initial jump/flash
+    const timer = setTimeout(() => setPlay(true), delay);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return (
+    // The outer wrapper uses will-change + GPU compositing to prevent
+    // Safari from repainting the marquee strip on every frame
+    <div
+      style={{
+        willChange: "transform",
+        WebkitTransform: "translateZ(0)",
+        transform: "translateZ(0)",
+      }}
+    >
+      <Marquee
+        speed={45}
+        gradient={false}
+        autoFill
+        direction={direction}
+        play={play}
+        // pauseOnHover is a nice UX bonus
+        pauseOnHover
+      >
+        {items.map((t, i) => (
+          <TestimonialCard key={i} t={t} />
+        ))}
+      </Marquee>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   const row1 = testimonials.slice(0, 3);
   const row2 = testimonials.slice(3);
@@ -132,20 +187,12 @@ export default function Testimonials() {
 
       {/* row 1 */}
       <div className="mt-3 md:mt-6">
-        <Marquee speed={45} gradient={false} pauseOnHover autoFill direction="left">
-          {row1.map((t, i) => (
-            <TestimonialCard key={i} t={t} />
-          ))}
-        </Marquee>
+        <MarqueeRow items={row1} direction="left" delay={100} />
       </div>
 
       {/* row 2 */}
       <div className="mt-1 md:mt-5">
-        <Marquee speed={45} gradient={false} pauseOnHover autoFill direction="right">
-          {row2.map((t, i) => (
-            <TestimonialCard key={i} t={t} />
-          ))}
-        </Marquee>
+        <MarqueeRow items={row2} direction="right" delay={150} />
       </div>
     </section>
   );

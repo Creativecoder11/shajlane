@@ -11,7 +11,7 @@ const links = [
   { label: "Why Us?", href: "#why-us" },
   { label: "We Serve", href: "#we-serve" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Network", href: "#network" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 type Status = "idle" | "loading" | "success" | "error";
