@@ -149,8 +149,6 @@ function MarqueeRow({
         autoFill
         direction={direction}
         play={play}
-        // pauseOnHover is a nice UX bonus
-        pauseOnHover
       >
         {items.map((t, i) => (
           <TestimonialCard key={i} t={t} />
