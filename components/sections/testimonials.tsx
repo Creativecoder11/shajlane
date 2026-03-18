@@ -110,7 +110,7 @@ export default function Testimonials() {
   const row2 = testimonials.slice(3);
 
   return (
-    <section className="section-y bg-[#F9F7FC] overflow-hidden">
+    <section className="section-y bg-[#F9F7FC] overflow-hidden ">
       {/* Header */}
       <div className="mx-auto text-center">
         <FadeIn className="space-y-3">
@@ -131,7 +131,7 @@ export default function Testimonials() {
       </div>
 
       {/* row 1 */}
-      <div className="mt-3 md:mt-6">
+      <div className="mt-3 md:mt-6 overflow-y-hidden">
         <Marquee speed={45} gradient={false} pauseOnHover autoFill direction="left">
           {row1.map((t, i) => (
             <TestimonialCard key={i} t={t} />

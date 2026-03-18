@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description:
     "Shajlane helps retailers, salons, pharmacies, and online sellers source authentic beauty and cosmetic products with efficient logistics and technology-driven operations.",
   metadataBase: new URL("https://shajlane.example"),
+  icons: {
+    icon: "/favicon-shajlane.svg",
+    shortcut: "/favicon-shajlane.svg",
+    apple: "/favicon-shajlane.svg",
+  },
   openGraph: {
     title: "Shajlane — B2B Beauty Distribution",
     description:
