@@ -1,69 +1,64 @@
-"use client"
+"use client";
 
-import { Facebook, Instagram, Linkedin, Twitter, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react"
-import Image from "next/image"
-import { useState } from "react"
+import { Facebook, Instagram, Linkedin, Twitter, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const links = [
-  "Home",
-  "About",
-  "Why Us?",
-  "We Serve",
-  "Testimonials",
-  "Network",
-]
+  { label: "Home", href: "/" },
+  { label: "About", href: "#about" },
+  { label: "Why Us?", href: "#why-us" },
+  { label: "We Serve", href: "#we-serve" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQ", href: "#faq" },
+];
 
-type Status = "idle" | "loading" | "success" | "error"
+type Status = "idle" | "loading" | "success" | "error";
 
 export default function Footer() {
-  const [email, setEmail] = useState("")
-  const [focused, setFocused] = useState(false)
-  const [status, setStatus] = useState<Status>("idle")
-  const [errorMsg, setErrorMsg] = useState("")
+  const [email, setEmail] = useState("");
+  const [focused, setFocused] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const isValidEmail = (val: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+  const isValidEmail = (val: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
 
   const handleSubscribe = async () => {
-    const trimmed = email.trim()
+    const trimmed = email.trim();
 
     if (!trimmed) {
-      setErrorMsg("Please enter your email.")
-      setStatus("error")
-      return
+      setErrorMsg("Please enter your email.");
+      setStatus("error");
+      return;
     }
     if (!isValidEmail(trimmed)) {
-      setErrorMsg("Please enter a valid email address.")
-      setStatus("error")
-      return
+      setErrorMsg("Please enter a valid email address.");
+      setStatus("error");
+      return;
     }
 
-    setStatus("loading")
-    setErrorMsg("")
+    setStatus("loading");
+    setErrorMsg("");
 
-    // Simulate API call
-    await new Promise((res) => setTimeout(res, 1200))
+    await new Promise((res) => setTimeout(res, 1200)); // simulate API
 
-    // Replace this block with your real API call, e.g.:
-    // const res = await fetch("/api/newsletter", { method: "POST", body: JSON.stringify({ email: trimmed }) })
-    // if (!res.ok) { setStatus("error"); setErrorMsg("Something went wrong."); return }
-
-    setStatus("success")
-    setEmail("")
-  }
+    setStatus("success");
+    setEmail("");
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleSubscribe()
-  }
+    if (e.key === "Enter") handleSubscribe();
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value)
+    setEmail(e.target.value);
     if (status === "error") {
-      setStatus("idle")
-      setErrorMsg("")
+      setStatus("idle");
+      setErrorMsg("");
     }
-    if (status === "success") setStatus("idle")
-  }
+    if (status === "success") setStatus("idle");
+  };
 
   const borderColor =
     status === "error"
@@ -72,35 +67,35 @@ export default function Footer() {
         ? "border-green-400"
         : focused
           ? "border-white/60"
-          : "border-white/30"
+          : "border-white/30";
 
   return (
-    <footer className="relative bg-[#07030F] text-white overflow-hidden">
+    <footer className="relative bg-[#07030F] text-white overflow-hidden" id="footer">
       <div className="py-12 md:py-20 max-w-8xl mx-auto px-4 md:px-16">
         <div className="flex flex-col md:flex-row justify-between items-start gap-16">
-
           {/* LEFT */}
           <div className="space-y-6 max-w-md">
             <div className="flex items-center gap-3">
-              <Image
-                src="/assets/icon/shajlane-white-logo.svg"
-                alt="Shajlane Logo"
-                width={120}
-                height={60}
-                className="w-30 h-12 md:w-41 md:h-16 object-contain"
-              />
+              <Link href="/">
+                <Image
+                  src="/assets/icon/shajlane-white-logo.svg"
+                  alt="Shajlane Logo"
+                  width={120}
+                  height={60}
+                  className="w-32 h-12 md:w-40 md:h-16 object-contain"
+                />
+              </Link>
             </div>
 
             <p className="text-white/70 text-base md:text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur. Dolor semper
-              egestas venenatis euismod donec dolor. Aenean
-              imperdiet non.
+              Lorem ipsum dolor sit amet consectetur. Dolor semper egestas venenatis euismod donec
+              dolor. Aenean imperdiet non.
             </p>
 
             {/* Newsletter */}
             <div className="mt-5 md:pt-10 space-y-2">
               <div
-                className={`relative flex items-center border-b border-dashed pb-2 text-sm transition-colors duration-200 ${borderColor}`}
+                className={`relative flex items-center border-b border-dashed pb-2 text-sm transition-colors duration-300 ${borderColor}`}
               >
                 {status === "success" ? (
                   <span className="flex items-center gap-2 text-green-400 text-sm w-full">
@@ -117,7 +112,7 @@ export default function Footer() {
                       onFocus={() => setFocused(true)}
                       onBlur={() => setFocused(false)}
                       placeholder="Subscribe To Our Newsletter"
-                      className="bg-transparent w-full pr-9 outline-none placeholder-white/50 text-white text-sm"
+                      className="bg-transparent w-full pr-9 outline-none placeholder-white/50 text-white text-sm transition-colors duration-300"
                       disabled={status === "loading"}
                     />
 
@@ -125,7 +120,7 @@ export default function Footer() {
                       onClick={handleSubscribe}
                       disabled={status === "loading"}
                       aria-label="Subscribe"
-                      className={`absolute right-0 top-1/2 -translate-y-1/2 h-6 w-6 flex items-center justify-center rounded-full transition-all duration-200
+                      className={`absolute right-0 top-1/2 -translate-y-1/2 h-6 w-6 flex items-center justify-center rounded-full transition-all duration-300
                         ${status === "loading"
                           ? "bg-white/10 cursor-not-allowed"
                           : "bg-white/10 hover:bg-white hover:text-black cursor-pointer"
@@ -141,9 +136,8 @@ export default function Footer() {
                 )}
               </div>
 
-              {/* Error message */}
               {status === "error" && errorMsg && (
-                <p className="text-red-400 text-xs pl-0.5">{errorMsg}</p>
+                <p className="text-red-400 text-xs pl-0.5 transition-opacity duration-300">{errorMsg}</p>
               )}
             </div>
           </div>
@@ -152,15 +146,15 @@ export default function Footer() {
           <div className="flex justify-between gap-16 md:gap-40 max-w-md">
             <ul className="space-y-4 text-white/80">
               {links.map((link) => (
-                <li key={link}>
+                <li key={link.label}>
                   <a
-                    href="#"
-                    className="relative inline-block transition-colors duration-200 hover:text-white
-                      after:absolute after:left-0 after:bottom-0 after:h-[2.5px] after:w-0
-                      after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
-                      after:transition-all after:duration-300 hover:after:w-full"
+                    href={link.href}
+                    className="relative inline-block transition-colors duration-300 hover:text-white
+          after:absolute after:left-0 after:bottom-0 after:h-[2.5px] after:w-0
+          after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+          after:transition-all after:duration-300 hover:after:w-full"
                   >
-                    {link}
+                    {link.label}
                   </a>
                 </li>
               ))}
@@ -189,7 +183,7 @@ export default function Footer() {
           <div className="flex gap-6">
             <a
               href="#"
-              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-200
+              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-300
                 after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
                 after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
                 after:transition-all after:duration-300 hover:after:w-full"
@@ -198,7 +192,7 @@ export default function Footer() {
             </a>
             <a
               href="#"
-              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-200
+              className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-300
                 after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
                 after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
                 after:transition-all after:duration-300 hover:after:w-full"
@@ -220,5 +214,5 @@ export default function Footer() {
         />
       </div>
     </footer>
-  )
+  );
 }

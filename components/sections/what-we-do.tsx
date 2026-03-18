@@ -51,12 +51,25 @@ const items = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const card = {
+  hidden: { opacity: 0, y: 40, scale: 0.96 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.72, ease: cubicBezier(0.22, 1, 0.36, 1) },
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: cubicBezier(0.22, 1, 0.36, 1),
+    },
   },
 };
 
@@ -64,6 +77,7 @@ export default function WhatWeDo() {
   return (
     <section className="section-y bg-[#F9FAFB]">
       <div className="mx-auto md:max-w-360 px-4 md:px-0">
+
         {/* Header */}
         <div className="mx-auto text-center">
           <FadeIn className="space-y-3">
@@ -87,53 +101,74 @@ export default function WhatWeDo() {
         </div>
 
         {/* Cards */}
-        <div className="mt-8 d:mt-16 grid gap-6 md:gap-10 lg:grid-cols-4">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="mt-8 d:mt-16 grid gap-6 md:gap-10 lg:grid-cols-4"
+        >
           {items.map(({ id, title, description, img }, idx) => (
-            <FadeIn key={id} delay={0.05 * idx}>
+            <motion.div
+              key={id}
+              variants={card}
+              initial="rest"
+              animate="rest"
+              whileHover="hover"
+              transition={{ duration: 0.35 }}
+              className={`relative ${idx === 1 || idx === 3 ? "lg:mt-14" : ""}`}
+            >
+              <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]"></div>
+
+              {/* main card */}
               <div
-                className={`relative ${idx === 1 || idx === 3 ? "lg:mt-14" : ""
-                  }`}
+                className="relative bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
+                style={{ padding: "1px 4px 4px 1px" }}
               >
-                <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]"></div>
-                {/* main card */}
-                <div
-                  className="relative bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] rounded-[23px]"
-                  style={{ padding: "1px 4px 4px 1px" }}
-                >
-                  <div className="rounded-[22px] bg-[#FCF7FF] p-5 md:p-8 shadow-sm">
+                <div className="rounded-[22px] bg-[#FCF7FF] p-5 md:p-8 shadow-sm transition-all duration-300 hover:shadow-xl">
 
-                    <div className="flex items-center justify-between mb-8 md:mb-12">
-                      {/* icon */}
-                      <div className="flex p-3 md:p-4 items-center justify-center rounded-md md:rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg">
-                        <Image
-                          src={img}
-                          alt={id}
-                          width={24}
-                          height={24}
-                          className="w-7 h-7 md:w-9 md:h-9 object-contain"
-                        />
-                      </div>
-                      {/* number */}
-                      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-base md:text-lg landing-none font-semibold text-[#7E4BA4]">
-                        {id}
-                      </div>
+                  <div className="flex items-center justify-between mb-8 md:mb-12">
+
+                    {/* icon */}
+                    <motion.div
+                      variants={{
+                        rest: { rotate: 0, scale: 1 },
+                        hover: { rotate: 15, scale: 1.08 },
+                      }}
+                      transition={{ type: "spring", stiffness: 220, damping: 18 }}
+                      className="flex p-3 md:p-4 items-center justify-center rounded-md md:rounded-xl bg-linear-to-br from-[#7E4BA4] to-[#301C3E] shadow-lg"
+                    >
+                      <Image
+                        src={img}
+                        alt={id}
+                        width={24}
+                        height={24}
+                        className="w-7 h-7 md:w-9 md:h-9 object-contain"
+                      />
+                    </motion.div>
+
+                    {/* number */}
+                    <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full border border-[#FFD7FF] bg-white text-base md:text-lg font-semibold text-[#7E4BA4]">
+                      {id}
                     </div>
-
-                    {/* title */}
-                    <h3 className="text-xl md:text-2xl font-sans font-semibold text-gray-900 leading-snug">
-                      {title}
-                    </h3>
-
-                    {/* description */}
-                    <p className="mt-3 text-muted-foreground leading-relaxed text-base md:text-lg">
-                      {description}
-                    </p>
                   </div>
+
+                  {/* title */}
+                  <h3 className="text-xl md:text-2xl font-sans font-semibold text-gray-900 leading-snug">
+                    {title}
+                  </h3>
+
+                  {/* description */}
+                  <p className="mt-3 text-muted-foreground leading-relaxed text-base md:text-lg">
+                    {description}
+                  </p>
+
                 </div>
               </div>
-            </FadeIn>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
