@@ -106,7 +106,7 @@ export default function WhatWeDo() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mt-8 d:mt-16 grid gap-6 md:gap-10 lg:grid-cols-4"
+          className="mt-8 md:mt-16 grid gap-6 md:gap-10 lg:grid-cols-4 lg:items-start"
         >
           {items.map(({ id, title, description, img }, idx) => (
             <motion.div
@@ -118,7 +118,7 @@ export default function WhatWeDo() {
               transition={{ duration: 0.35 }}
               className={`relative ${idx === 1 || idx === 3 ? "lg:mt-14" : ""}`}
             >
-              <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]"></div>
+              <div className="absolute -inset-1 rounded-[26px] border border-dashed border-[#FFD7FF]" />
 
               {/* main card */}
               <div
