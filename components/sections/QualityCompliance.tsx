@@ -251,7 +251,7 @@ export default function QualityCompliance() {
                       Excellence In <br />
                       <span className="relative inline-block">
                         <GradientText>Quality And Compliance</GradientText>
-                        <GradientUnderline bottom="-16px" mdBottom="-24px" />
+                        <GradientUnderline bottom="-16px" mdBottom="-8px" />
                       </span>
                     </>
                   }

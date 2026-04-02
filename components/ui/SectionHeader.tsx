@@ -111,8 +111,9 @@ export function GradientUnderline({
         <motion.svg
             ref={svgRef}
             viewBox="0 0 500 40"
+            preserveAspectRatio="none"
             className="absolute left-0 w-full"
-            style={{ bottom }}
+            style={{ bottom, height: "16px" }}
             fill="none"
         >
             <motion.path

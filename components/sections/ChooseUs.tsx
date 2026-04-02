@@ -170,7 +170,7 @@ export default function ChooseUs() {
                   Your Trusted Partner in <br className="hidden md:block" />
                   <span className="relative inline-block">
                     <GradientText>Beauty Supply</GradientText>
-                    <GradientUnderline bottom="-12px" mdBottom="-20px" />
+                    <GradientUnderline bottom="-12px" mdBottom="-8px" />
                   </span>
                 </>
               }

@@ -91,7 +91,7 @@ export default function WhatWeDo() {
                     Beauty{" "}
                     <span className="relative inline-block">
                       <GradientText>Supply Solutions</GradientText>
-                      <GradientUnderline bottom="-12px" mdBottom="-24px" />
+                      <GradientUnderline bottom="-12px" mdBottom="-8px" />
                     </span>
                   </>
                 }

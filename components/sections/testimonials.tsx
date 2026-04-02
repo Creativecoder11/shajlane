@@ -175,7 +175,7 @@ export default function Testimonials() {
                 Trusted By Beauty Industry <br className="hidden md:block" />
                 <span className="relative inline-block">
                   <GradientText>Professionals</GradientText>
-                  <GradientUnderline bottom="-12px" mdBottom="-16px" />
+                  <GradientUnderline bottom="-12px" mdBottom="-12px" />
                 </span>
               </>
             }

@@ -47,7 +47,7 @@ const Products = () => {
                                     Beauty Products <br />
                                     <span className="relative inline-block">
                                         <GradientText>We Offer</GradientText>
-                                        <GradientUnderline bottom="-4px" mdBottom="-12px" />
+                                        <GradientUnderline bottom="-4px" mdBottom="-8px" />
                                     </span>
                                 </>
                             }
