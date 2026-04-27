@@ -261,7 +261,7 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-4"
             >
               <a
-                href="#explore"
+                href="https://store.shajlane.com/login"
                 className="
                   group
                   inline-flex items-center gap-2.5
@@ -278,10 +278,10 @@ export default function Hero() {
                   active:scale-[0.98]
                 "
               >
-                Explore More
+                Register Now
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
-              <GooglePlayBadge />
+              {/* <GooglePlayBadge /> */}
             </motion.div>
           </div>
 

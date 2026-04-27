@@ -1,7 +1,7 @@
 "use client";
-import FadeIn from "@/components/sections/fade-in";
 import Image from "next/image";
 import { motion, cubicBezier } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function CTA() {
   const container = {
@@ -60,7 +60,7 @@ export default function CTA() {
                 variants={fadeSlide}
                 className="text-lg md:text-xl max-w-4xl"
               >
-                Lorem ipsum dolor sit amet consectetur. Suspendisse at sagittis augue aliquam arcu purus pretium diam. Urna interdum lectus egestas magnis donec. At magna fames eu mattis sapien ut egestas.
+                Streamline your business with a seamless ordering experience. Track, manage, and restock products effortlessly from anywhere, ensuring your shelves are always filled with authentic beauty essentials.
               </motion.p>
 
               {/* Google Play Button */}
@@ -70,13 +70,34 @@ export default function CTA() {
                 transition={{ type: "spring", stiffness: 260, damping: 18 }}
                 className="mt-4 md:mt-8"
               >
-                <Image
+                {/* <Image
                   src="/assets/icon/googlePlay.svg"
                   alt="googlePlay"
                   width={24}
                   height={24}
                   className="mx-auto w-35 h-12 md:w-50 md:h-16 object-contain"
-                />
+                /> */}
+                <a
+                  href="https://store.shajlane.com/login"
+                  className="
+                  group
+                  inline-flex items-center gap-2.5
+                  px-7 py-3.5
+                  rounded
+                  border border-white
+                  bg-white
+                  text-black font-semibold text-sm md:text-xl
+                  shadow-lg shadow-violet-900/20
+                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:shadow-xl hover:shadow-violet-900/30
+                  hover:-translate-y-1
+                  hover:scale-[1.03]
+                  active:scale-[0.98]
+                "
+                >
+                  Register Now
+                  <ArrowUpRight className="w-4 md:w-6 h-4 md:h-6 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                </a>
               </motion.div>
             </div>
           </div>
