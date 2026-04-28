@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Why Us?", href: "#why-us" },
   { label: "We Serve", href: "#we-serve" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact Us", href: "#footer" },
 ];
 
 export default function Navbar() {
@@ -83,7 +84,7 @@ export default function Navbar() {
             {/* CTA */}
             <div className="hidden md:block">
               <a
-                href="#footer"
+                href="https://store.shajlane.com/login"
                 className="
             group
             inline-flex items-center gap-2.5
@@ -100,7 +101,7 @@ export default function Navbar() {
             active:scale-[0.98]
             "
               >
-                Contact us
+                Login Now
               </a>
             </div>
 
@@ -138,10 +139,10 @@ export default function Navbar() {
                     </a>
                   ))}
                   <a
-                    href="#contact"
+                    href="https://store.shajlane.com/login"
                     className="mt-2 m-4 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
                   >
-                    Contact Us
+                    Login Now
                   </a>
                 </div >
               </motion.div >

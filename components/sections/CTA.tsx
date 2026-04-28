@@ -83,10 +83,10 @@ export default function CTA() {
                   group
                   inline-flex items-center gap-2.5
                   px-7 py-3.5
-                  rounded
+                  rounded-full
                   border border-white
                   bg-white
-                  text-black font-semibold text-sm md:text-xl
+                  text-black font-semibold text-sm md:text-base
                   shadow-lg shadow-violet-900/20
                   transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
                   hover:shadow-xl hover:shadow-violet-900/30
@@ -95,8 +95,8 @@ export default function CTA() {
                   active:scale-[0.98]
                 "
                 >
-                  Register Now
-                  <ArrowUpRight className="w-4 md:w-6 h-4 md:h-6 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
+                  Login Now
+                  <ArrowUpRight className="w-4 md:w-5 h-4 md:h-5 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </a>
               </motion.div>
             </div>

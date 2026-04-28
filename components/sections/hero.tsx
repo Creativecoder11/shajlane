@@ -278,7 +278,7 @@ export default function Hero() {
                   active:scale-[0.98]
                 "
               >
-                Register Now
+                Login Now
                 <ArrowUpRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </a>
               {/* <GooglePlayBadge /> */}
