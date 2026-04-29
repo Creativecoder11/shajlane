@@ -265,7 +265,8 @@ export default function Hero() {
                 className="
                   group
                   inline-flex items-center gap-2.5
-                  px-7 py-3.5
+                  px-4 py-2.5
+                  md:px-7 md:py-3.5
                   rounded-[100px]
                   border border-[#7E4BA4]
                   bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
@@ -328,7 +329,7 @@ export default function Hero() {
               <FloatingBadge
                 label="Authentic Products"
                 color="yellow"
-                className="top-[20px] -rotate-20"
+                className="top-5 -rotate-20"
                 delay={0}
                 rotateRange={[-2, 4]}
               />

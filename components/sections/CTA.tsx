@@ -82,7 +82,8 @@ export default function CTA() {
                   className="
                   group
                   inline-flex items-center gap-2.5
-                  px-7 py-3.5
+                  px-4 py-2.5
+                  md:px-7 md:py-3.5
                   rounded-full
                   border border-white
                   bg-white

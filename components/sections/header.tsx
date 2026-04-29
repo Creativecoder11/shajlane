@@ -81,38 +81,64 @@ export default function Navbar() {
               ))}
             </ul>
 
-            {/* CTA */}
-            <div className="hidden md:block">
-              <a
-                href="https://store.shajlane.com/login"
-                className="
-            group
-            inline-flex items-center gap-2.5
-            px-7 py-3.5
-            rounded-[100px]
-            border border-[#7E4BA4]
-            bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
-            text-white font-semibold text-sm
-            shadow-lg shadow-violet-900/20
-            transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
-            hover:shadow-xl hover:shadow-violet-900/30
-            hover:-translate-y-1
-            hover:scale-[1.03]
-            active:scale-[0.98]
-            "
-              >
-                Login Now
-              </a>
-            </div>
+            <div className="flex gap-2">
+              {/* CTA */}
+              <div className="md:hidden block">
+                <a
+                  href="https://store.shajlane.com/login"
+                  className="
+                  group
+                  inline-flex items-center gap-2.5
+                  px-4 py-2.5
+                  md:px-7 md:py-3.5
+                  rounded-[100px]
+                  border border-[#7E4BA4]
+                  bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                  text-white font-semibold text-sm
+                  shadow-lg shadow-violet-900/20
+                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:shadow-xl hover:shadow-violet-900/30
+                  hover:-translate-y-1
+                  hover:scale-[1.03]
+                  active:scale-[0.98]
+                "
+                >
+                  Login
+                </a>
+              </div>
+              <div className="hidden md:block">
+                <a
+                  href="https://store.shajlane.com/login"
+                  className="
+                  group
+                  inline-flex items-center gap-2.5
+                  px-4 py-2.5
+                  md:px-7 md:py-3.5
+                  rounded-[100px]
+                  border border-[#7E4BA4]
+                  bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
+                  text-white font-semibold text-sm
+                  shadow-lg shadow-violet-900/20
+                  transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]
+                  hover:shadow-xl hover:shadow-violet-900/30
+                  hover:-translate-y-1
+                  hover:scale-[1.03]
+                  active:scale-[0.98]
+                "
+                >
+                  Login Now
+                </a>
+              </div>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-lg text-gray-700 hover:text-violet-700 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="md:hidden p-2 rounded-lg text-gray-700 hover:text-violet-700 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+              </button>
+            </div>
           </nav>
         </div >
 
@@ -127,7 +153,7 @@ export default function Navbar() {
                 transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="md:hidden bg-white/98 backdrop-blur-md border-t rounded-2xl border-gray-100 overflow-hidden"
               >
-                <div className="max-w-[1280px] mx-auto py-4 flex flex-col gap-1">
+                <div className="max-w-7xl mx-auto py-2 flex flex-col gap-1">
                   {navLinks.map((link) => (
                     <a
                       key={link.label}
@@ -140,7 +166,7 @@ export default function Navbar() {
                   ))}
                   <a
                     href="https://store.shajlane.com/login"
-                    className="mt-2 m-4 px-4 py-3 rounded-xl bg-gradient-to-r from-violet-700 to-purple-600 text-white text-sm font-semibold text-center"
+                    className="mt-2 m-4 px-4 py-3 rounded-xl bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)] text-white text-sm font-semibold text-center"
                   >
                     Login Now
                   </a>
