@@ -12,24 +12,24 @@ import { motion, cubicBezier } from "framer-motion";
 
 const faqs = [
   {
-    q: "How does Shajlane ensure product quality?",
-    a: "Shajlane partners with verified brands and follows strict quality control and compliance standards to guarantee safe, reliable beauty products.",
+    q: "How does Shajlane verify the brands and suppliers it lists?",
+    a: "Every brand and distributor goes through a three-step check before they appear on the platform: authorized-distributor documentation, batch and certificate-of-analysis review, and a sample inspection from the first shipment. Anything that fails a step doesn't go live.",
   },
   {
-    q: "How does Shajlane ensure product quality?",
-    a: "Shajlane partners with verified brands and follows strict quality control and compliance standards to guarantee safe, reliable beauty products.",
+    q: "Who can buy on Shajlane?",
+    a: "Shajlane is B2B-only. Retailers, salons, pharmacies, online beauty sellers, and licensed professional buyers are eligible. You'll provide trade documentation during signup, and wholesale pricing becomes visible once your account is verified.",
   },
   {
-    q: "How does Shajlane ensure product quality?",
-    a: "Shajlane partners with verified brands and follows strict quality control and compliance standards to guarantee safe, reliable beauty products.",
+    q: "What are minimum order quantities and how is wholesale pricing structured?",
+    a: "MOQs are set per brand and shown on every product page. Wholesale tiers reduce the unit price as your volume grows — no negotiation cycles, no hidden conditions, and the next price break is always visible at checkout.",
   },
   {
-    q: "How does Shajlane ensure product quality?",
-    a: "Shajlane partners with verified brands and follows strict quality control and compliance standards to guarantee safe, reliable beauty products.",
+    q: "How long does fulfillment take after I place an order?",
+    a: "In-stock items ship within 24–48 hours of order confirmation. Domestic deliveries usually arrive in 2–5 business days; cross-border orders include a customs and timing estimate before you confirm.",
   },
   {
-    q: "How does Shajlane ensure product quality?",
-    a: "Shajlane partners with verified brands and follows strict quality control and compliance standards to guarantee safe, reliable beauty products.",
+    q: "What happens if a product arrives damaged or doesn't match the order?",
+    a: "Report the issue within 7 days through your account dashboard with a photo and we'll arrange a replacement or credit. Supplier accountability is tracked on our side — you don't have to chase it.",
   },
 ];
 

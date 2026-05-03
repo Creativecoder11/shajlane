@@ -60,7 +60,8 @@ export default function CTA() {
                 variants={fadeSlide}
                 className="text-lg md:text-xl max-w-4xl"
               >
-                Streamline your business with a seamless ordering experience. Track, manage, and restock products effortlessly from anywhere, ensuring your shelves are always filled with authentic beauty essentials.
+                Place orders, track shipments, and reorder bestsellers from your phone — wholesale pricing,
+                live stock visibility, and authenticity verification on every SKU you carry.
               </motion.p>
 
               {/* Google Play Button */}

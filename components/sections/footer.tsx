@@ -88,8 +88,8 @@ export default function Footer() {
             </div>
 
             <p className="text-white/70 text-base md:text-lg leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur. Dolor semper egestas venenatis euismod donec
-              dolor. Aenean imperdiet non.
+              Shajlane connects retailers, salons, pharmacies, and online sellers with verified beauty
+              brands — wholesale pricing, traceable supply, and fulfillment you can plan around.
             </p>
 
             {/* Newsletter */}

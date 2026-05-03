@@ -7,13 +7,13 @@ import SectionHeader, { GradientText, GradientUnderline } from "../ui/SectionHea
 
 const products = [
     { image: "/assets/brand/brand1.png", title: "Facial Cleansers" },
-    { image: "/assets/brand/brand2.png", title: "Serums & Moisturizers" },
-    { image: "/assets/brand/brand3.png", title: "Sun Protection" },
-    { image: "/assets/brand/brand4.png", title: "Body Care" },
-    { image: "/assets/brand/brand1.png", title: "Facial Cleansers" },
-    { image: "/assets/brand/brand2.png", title: "Serums & Moisturizers" },
-    { image: "/assets/brand/brand3.png", title: "Sun Protection" },
-    { image: "/assets/brand/brand4.png", title: "Body Care" },
+    { image: "/assets/brand/brand2.png", title: "Serums & Treatments" },
+    { image: "/assets/brand/brand3.png", title: "Moisturizers" },
+    { image: "/assets/brand/brand4.png", title: "Sun Protection" },
+    { image: "/assets/brand/brand5.png", title: "Body Care" },
+    { image: "/assets/brand/brand6.png", title: "Hair Care" },
+    { image: "/assets/brand/brand7.png", title: "Makeup Essentials" },
+    { image: "/assets/brand/brand8.png", title: "Professional Beauty Tools" },
 ];
 
 const Products = () => {
