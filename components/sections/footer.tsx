@@ -181,24 +181,24 @@ export default function Footer() {
         <div className="border-t border-dashed border-white/20 mt-20 pt-6 flex flex-col md:flex-row justify-center items-center md:justify-between gap-2 text-sm text-white/60">
           <p>© {new Date().getFullYear()} Shajlane. All rights reserved.</p>
           <div className="flex gap-6">
-            <a
-              href="#"
+            <Link
+              href="/privacy-policy"
               className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-300
                 after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
                 after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
                 after:transition-all after:duration-300 hover:after:w-full"
             >
               Privacy Policy
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/terms-and-conditions"
               className="relative inline-block text-white/50 hover:text-white/90 transition-colors duration-300
                 after:absolute after:left-0 after:bottom-0 after:h-[1.5px] after:w-0
                 after:bg-[linear-gradient(96deg,#7E4BA4_0%,#301C3E_100%)]
                 after:transition-all after:duration-300 hover:after:w-full"
             >
               Terms and Conditions
-            </a>
+            </Link>
           </div>
         </div>
       </div>

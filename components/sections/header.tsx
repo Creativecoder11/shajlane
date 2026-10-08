@@ -7,12 +7,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
-  { label: "Why Us?", href: "#why-us" },
-  { label: "We Serve", href: "#we-serve" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact Us", href: "#footer" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Why Us?", href: "/#why-us" },
+  { label: "We Serve", href: "/#we-serve" },
+  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Contact Us", href: "/#footer" },
 ];
 
 export default function Navbar() {
@@ -67,7 +67,7 @@ export default function Navbar() {
             <ul className="hidden md:flex items-center gap-1">
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className={`relative px-4 py-2 text-lg rounded-lg transition-colors duration-200 group ${scrolled
                       ? "text-[#5B5B68] hover:text-violet-700"
@@ -76,7 +76,7 @@ export default function Navbar() {
                   >
                     {link.label}
                     <span className="absolute bottom-1 left-4 right-4 h-[2.5px] rounded-full bg-violet-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -155,14 +155,14 @@ export default function Navbar() {
               >
                 <div className="max-w-7xl mx-auto py-2 flex flex-col gap-1">
                   {navLinks.map((link) => (
-                    <a
+                    <Link
                       key={link.label}
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
                       className="px-4 py-3 rounded-xl text-gray-700 text-sm font-medium hover:bg-violet-50 hover:text-violet-700 transition-colors"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                   <a
                     href="https://store.shajlane.com/login"
